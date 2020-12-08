@@ -12,7 +12,7 @@ const Home = ({ slugs }) => (
             <title>Lorenzo Bartolini</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Jumbotron>
+        <Jumbotron className="mb-0">
             <h2>Benvenuto sul mio blog!</h2>
             <p>Lista delle pagine:</p>
             {

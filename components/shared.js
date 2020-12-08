@@ -4,7 +4,7 @@ import { Button, Row, Navbar, Nav, Container } from "react-bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 const Header = () => (
-    <Navbar>
+    <Navbar bg="light" sticky="top">
         <Navbar.Brand>Lorenzo Bartolini</Navbar.Brand>
         <Nav.Link>
             <Link href="/">Home</Link>
@@ -19,16 +19,17 @@ const Header = () => (
 )
 
 const Footer = () => (
-    <Container fluid>
+    <Container fluid className="text-center bg-light py-3">
         Copyright Lorenzo Bartolini 2020
     </Container>
 )
 
-const Layout = (props) => (<>
-    <Header />
-    {props.children}
-    <Footer />
-</>
+const Layout = (props) => (
+    <>
+        <Header />
+        {props.children}
+        <Footer />
+    </>
 )
 
 export { Layout }
