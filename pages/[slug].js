@@ -4,17 +4,19 @@ import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
 import marked from "marked"
+import { Header, Footer } from "../util/shared"
 
 const folderName = "posts"
 
 const Post = ({ htmlString, data }) => {
-    return (
-        <>
-            <Head>
-                <title>{data.title}</title>
-            </Head>
-            <div dangerouslySetInnerHTML={{ __html: htmlString }} />
-        </>)
+    return (<>
+        <Head>
+            <title>{data.title}</title>
+        </Head>
+        {Header()}
+        <main dangerouslySetInnerHTML={{ __html: htmlString }} />
+        {Footer()}
+    </>)
 }
 
 export const getStaticProps = async ({ params: { slug } }) => {
