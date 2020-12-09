@@ -1,7 +1,6 @@
 import Link from "next/link"
 import Head from "next/head"
 import { Button, Row, Navbar, Nav, Container, NavDropdown, Form, FormControl } from "react-bootstrap"
-import "bootstrap/dist/css/bootstrap.min.css"
 
 const Header = () => (
     <Navbar bg="light" expand="lg" sticky="top">

@@ -13,7 +13,7 @@ const Post = ({ htmlString, data }) => (
         <Head>
             <title>{data.title}</title>
         </Head>
-        <Container>
+        <Container className="my-5">
             <main dangerouslySetInnerHTML={{ __html: htmlString }} />
         </Container>
 
