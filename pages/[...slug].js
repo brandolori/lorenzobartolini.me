@@ -4,7 +4,7 @@ import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
 import marked from "marked"
-import { Layout } from "../components/shared"
+import Layout from "../components/Layout"
 import { Jumbotron, Container } from "react-bootstrap"
 
 const folderName = "pages-md"

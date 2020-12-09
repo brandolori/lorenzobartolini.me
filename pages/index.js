@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import fs from "fs"
 import Link from "next/link"
-import { Layout } from "../components/shared"
+import Layout from "../components/Layout"
 import { Jumbotron } from 'react-bootstrap'
 import path from "path"
 
