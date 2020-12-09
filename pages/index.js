@@ -2,7 +2,7 @@ import Head from 'next/head'
 import fs from "fs"
 import Link from "next/link"
 import Layout from "../components/Layout"
-import { Jumbotron } from 'react-bootstrap'
+import Jumbotron from 'react-bootstrap/Jumbotron'
 import path from "path"
 
 
@@ -28,7 +28,7 @@ const Home = ({ slugs }) => (
     </Layout>)
 
 export const getStaticProps = async () => {
-    const files = fs.readdirSync(path.join("pages-md","posts"))
+    const files = fs.readdirSync(path.join("pages-md", "posts"))
     return {
         props: {
             slugs: files.map(name => name.replace(".md", "")).map(el => ({

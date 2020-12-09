@@ -1,11 +1,10 @@
-import React from "react"
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
 import marked from "marked"
 import Layout from "../components/Layout"
-import { Jumbotron, Container } from "react-bootstrap"
+import Container from "react-bootstrap/Container"
 
 const folderName = "pages-md"
 

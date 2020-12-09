@@ -1,6 +1,7 @@
 ---
 title: Contact Information
 ---
-email - <lori.barto@live.it>
+If you need to contact me just write an email!
 
-phone - 3420065199
+
+email - <lori.barto@live.it>
