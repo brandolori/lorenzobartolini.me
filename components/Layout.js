@@ -18,11 +18,9 @@ const Header = () => (
 )
 
 const Footer = () => (
-    <footer>
-        <Container fluid className="text-center bg-light py-3">
-            Copyright Lorenzo Bartolini 2020
-        </Container>
-    </footer>
+    <Container as="footer" fluid className="text-center bg-light py-3">
+        Copyright Lorenzo Bartolini 2020
+    </Container>
 )
 
 const Layout = (props) => (

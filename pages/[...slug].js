@@ -9,24 +9,52 @@ import { Row, Image, Col } from "react-bootstrap"
 
 const folderName = "pages-md"
 
-const Post = ({ htmlString, data }) => (
-    <Layout>
-        <Head>
-            <title>{data.title}</title>
-        </Head>
-        <Container className="my-5">
+const MdContent = ({ htmlString, data }) => (
+    <>
+        <header>
+            <h1>{data.title}</h1>
+        </header>
+        <main dangerouslySetInnerHTML={{ __html: htmlString }} className="mb-3" />
+    </>
+)
+
+const Content = ({ htmlString, data }) => {
+    if (data.image) {
+        return (
             <Row>
                 <Col xs="12" md="6">
-                    <Image src="me.jpg"></Image>
+                    <Image alt="" src={data.image} rounded></Image>
                 </Col>
-                <Col xs="12" md="6" className="mt-3">
-                    <main dangerouslySetInnerHTML={{ __html: htmlString }} />
+                <Col as="article" xs="12" md="6" className="mt-3">
+                    <MdContent htmlString={htmlString} data={data}></MdContent>
                 </Col>
             </Row>
-        </Container>
+        )
+    }
+    else {
+        return (
+            <Row>
+                <Col as="article">
+                    <MdContent htmlString={htmlString} data={data}></MdContent>
+                </Col>
+            </Row>
+        )
+    }
+}
 
-    </Layout>
-)
+const Page = ({ htmlString, data }) => {
+
+    return (
+        <Layout>
+            <Head>
+                <title>{data.title}</title>
+            </Head>
+            <Container as="main" className="my-5">
+                <Content htmlString={htmlString} data={data}></Content>
+            </Container>
+        </Layout>
+    )
+}
 
 
 export const getStaticProps = async ({ params: { slug } }) => {
@@ -72,4 +100,4 @@ export const getStaticPaths = async () => {
     }
 }
 
-export default Post
+export default Page

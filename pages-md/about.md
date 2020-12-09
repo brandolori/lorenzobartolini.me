@@ -1,5 +1,6 @@
 ---
 title: About me
+image: me.jpg
 ---
 Hi! I'm Lorenzo. I'm 21 years old.
 
