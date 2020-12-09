@@ -13,8 +13,8 @@ const Home = ({ slugs }) => (
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <Jumbotron className="mb-0">
-            <h2>Benvenuto sul mio blog!</h2>
-            <p>Lista delle pagine:</p>
+            <h2>Welcome to my site!</h2>
+            <p>It is currently under construction. Still, here are some contents:</p>
             {
                 slugs.map(slug => (
                     <div key={slug}>
