@@ -16,11 +16,11 @@ const Post = ({ htmlString, data }) => (
         </Head>
         <Container className="my-5">
             <Row>
-                <Col>
-                    <main dangerouslySetInnerHTML={{ __html: htmlString }} />
-                </Col>
-                <Col>
+                <Col xs="12" md="6">
                     <Image src="me.jpg"></Image>
+                </Col>
+                <Col xs="12" md="6" className="mt-3">
+                    <main dangerouslySetInnerHTML={{ __html: htmlString }} />
                 </Col>
             </Row>
         </Container>
