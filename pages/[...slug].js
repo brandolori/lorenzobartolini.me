@@ -5,6 +5,7 @@ import Head from "next/head"
 import marked from "marked"
 import Layout from "../components/Layout"
 import Container from "react-bootstrap/Container"
+import { Row, Image, Col } from "react-bootstrap"
 
 const folderName = "pages-md"
 
@@ -14,7 +15,14 @@ const Post = ({ htmlString, data }) => (
             <title>{data.title}</title>
         </Head>
         <Container className="my-5">
-            <main dangerouslySetInnerHTML={{ __html: htmlString }} />
+            <Row>
+                <Col>
+                    <main dangerouslySetInnerHTML={{ __html: htmlString }} />
+                </Col>
+                <Col>
+                    <Image src="me.jpg"></Image>
+                </Col>
+            </Row>
         </Container>
 
     </Layout>
