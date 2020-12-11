@@ -1,15 +1,16 @@
 import Document, { Head, Main, NextScript, Html } from 'next/document'
 
 export default class MyDocument extends Document {
-  render() {
-    return (
-      <Html lang="en">
-        <Head />
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+    render() {
+        const isDev = process.env.NODE_ENV === "development";
+        return (
+            <Html lang="en">
+                <Head />
+                <body>
+                    <Main />
+                    {isDev && <NextScript />}
+                </body>
+            </Html>
+        );
+    }
 }
