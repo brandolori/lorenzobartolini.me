@@ -40,7 +40,3 @@ export const getStaticProps = async () => {
 }
 
 export default Home
-
-export const config = {
-    unstable_runtimeJS: false
-};

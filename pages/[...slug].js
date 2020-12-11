@@ -14,7 +14,7 @@ const MdContent = ({ htmlString, data }) => (
         <header>
             <h1>{data.title}</h1>
         </header>
-        <main dangerouslySetInnerHTML={{ __html: htmlString }} className="mb-3" />
+        <main dangerouslySetInnerHTML={{ __html: htmlString }} className="mt-3" />
     </>
 )
 
@@ -101,7 +101,3 @@ export const getStaticPaths = async () => {
 }
 
 export default Page
-
-export const config = {
-    unstable_runtimeJS: false
-};
