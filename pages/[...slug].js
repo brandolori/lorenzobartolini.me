@@ -101,3 +101,7 @@ export const getStaticPaths = async () => {
 }
 
 export default Page
+
+export const config = {
+    unstable_runtimeJS: false
+};
