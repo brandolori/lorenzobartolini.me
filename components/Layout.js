@@ -25,6 +25,9 @@ const Footer = () => (
 
 const Layout = (props) => (
     <>
+        <Head>
+            <link rel="manifest" href="/manifest.json" />
+        </Head>
         <Header />
         {props.children}
         <Footer />

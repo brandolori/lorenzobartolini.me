@@ -1,0 +1,16 @@
+{
+    "name": "Lorenzo Bartolini Website",
+    "short_name": "Lorenzo Bartolini",
+    "theme_color": "#2196f3",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "/",
+    "icons": [
+        {
+            "src": "/icon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
