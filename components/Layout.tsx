@@ -1,6 +1,5 @@
 import Link from "next/link"
-import Head from "next/head"
-import { Button, Row, Navbar, Nav, Container, NavDropdown, Form, FormControl } from "react-bootstrap"
+import { Navbar, Nav, Container } from "react-bootstrap"
 
 const Header = () => (
     <Navbar bg="light" expand="lg" sticky="top">
@@ -25,12 +24,6 @@ const Footer = () => (
 
 const Layout = (props) => (
     <>
-        <Head>
-            {/* PWA */}
-            <link rel="manifest" href="/manifest.json" />
-            <link rel="apple-touch-icon" href="/icon192.png" />
-            <meta name="theme-color" content="#2196f3" />
-        </Head>
         <Header />
         {props.children}
         <Footer />
