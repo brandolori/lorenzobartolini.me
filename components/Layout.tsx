@@ -1,5 +1,15 @@
 import Link from "next/link"
 import { Navbar, Nav, Container } from "react-bootstrap"
+import makeStyles from "../src/makeStyles"
+
+const styles = makeStyles({
+    wrapper: {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        height: "100%"
+    }
+})
 
 const Header = () => (
     <Navbar bg="light" expand="lg" sticky="top">
@@ -23,11 +33,13 @@ const Footer = () => (
 )
 
 const Layout = (props) => (
-    <>
-        <Header />
-        {props.children}
+    <div style={styles.wrapper}>
+        <div>
+            <Header />
+            {props.children}
+        </div>
         <Footer />
-    </>
+    </div>
 )
 
 export default Layout

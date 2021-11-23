@@ -2,7 +2,6 @@ import Head from 'next/head'
 import fs from "fs"
 import Link from "next/link"
 import Layout from "../components/Layout"
-import Jumbotron from 'react-bootstrap/Jumbotron'
 import path from "path"
 
 
@@ -12,7 +11,7 @@ const Home = ({ slugs }) => (
             <title>Lorenzo Bartolini</title>
             <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Jumbotron as="main" className="mb-0">
+        <main className="mb-0">
             <h2>Welcome to my site!</h2>
             <p>It is currently under construction. Still, here are some contents:</p>
             {
@@ -24,7 +23,7 @@ const Home = ({ slugs }) => (
                     </div>
                 ))
             }
-        </Jumbotron>
+        </main>
     </Layout>)
 
 export const getStaticProps = async () => {

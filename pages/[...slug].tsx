@@ -2,10 +2,12 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
-import marked from "marked"
 import Layout from "../components/Layout"
 import Container from "react-bootstrap/Container"
 import { Row, Image, Col } from "react-bootstrap"
+import React from "react"
+import ReactMarkdown from "react-markdown"
+
 
 const folderName = "pages-md"
 
@@ -14,7 +16,7 @@ const MdContent = ({ htmlString, data }) => (
         <header>
             <h1>{data.title}</h1>
         </header>
-        <main dangerouslySetInnerHTML={{ __html: htmlString }} className="mt-3" />
+        <ReactMarkdown children={htmlString} />
     </>
 )
 
@@ -64,7 +66,7 @@ export const getStaticProps = async ({ params: { slug } }) => {
     filePath = filePath + ".md"
     const markDownWithMetadata = fs.readFileSync(filePath).toString()
     const parsedMarkdown = matter(markDownWithMetadata)
-    const htmlString = marked(parsedMarkdown.content)
+    const htmlString = parsedMarkdown.content
     return {
         props: {
             htmlString,
