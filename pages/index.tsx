@@ -3,6 +3,8 @@ import fs from "fs"
 import Link from "next/link"
 import Layout from "../components/Layout"
 import path from "path"
+import React from 'react'
+import AnimatedHeader from '../components/AnimatedHeader'
 
 
 const Home = ({ slugs }) => <>
@@ -10,9 +12,9 @@ const Home = ({ slugs }) => <>
         <title>Lorenzo Bartolini</title>
         <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main style={{ width: "100%"}}>
-        <h1>Welcome to my site!</h1>
-        <p>It is currently under construction. Still, here are some contents:</p>
+    <main style={{ width: "100%" }}>
+        <AnimatedHeader title="Welcome to my site!" />
+        <p>It is currently under construction. Still, here's a test page:</p>
         {
             slugs.map(slug => (
                 <div key={slug}>

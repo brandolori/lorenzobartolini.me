@@ -6,29 +6,18 @@ import React, { useContext } from "react"
 import ReactMarkdown from "react-markdown"
 import PointerContext from "../src/PointerContext"
 import { useSpring, animated, config } from 'react-spring'
+import AnimatedHeader from "../components/AnimatedHeader"
 
 const folderName = "pages-md"
 
 const Page = ({ htmlString, data }) => {
-    const [pointer,] = useContext(PointerContext)
-    const props = useSpring({ bottom: pointer.y * 3, left: pointer.x * 3 })
     return <>
         <Head>
             <title>{data.title}</title>
         </Head>
 
         <header>
-            <animated.h1
-                style={{
-                    position: "relative",
-                    display: "block",
-                    width: "fit-content",
-                    transition: "none",
-                    perspective: "500px",
-                    ...props
-                }}>
-                {data.title}
-            </animated.h1>
+            <AnimatedHeader title={data.title} />
         </header>
         <ReactMarkdown children={htmlString} />
 

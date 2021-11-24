@@ -55,7 +55,7 @@ const Layout = (props) => {
     return (
         <div style={{ width: "100%", height: "100%" }}
             onPointerMove={handlePointerMove}>
-            <div ref={backgroundRef} style={{ position: "fixed", top: 0, bottom: 0, left: 0, right: 0 }}>
+            <div ref={backgroundRef} style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
                 <Background pointerPosition={pointerPos} />
             </div>
             <div style={styles.container} className="container">

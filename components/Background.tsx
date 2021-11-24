@@ -111,7 +111,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                 />
                 <EffectComposer >
                     <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={250} intensity={.4} />
-                    <Noise opacity={0.02} />
+                    <Noise opacity={0.03} />
                     <Vignette eskil={false} offset={0.1} darkness={0.4} />
                 </EffectComposer>
             </ContextBridge>
