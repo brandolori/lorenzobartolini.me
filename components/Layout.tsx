@@ -24,7 +24,8 @@ const styles = makeStyles({
         justifyContent: "space-between",
         minHeight: "100%",
         margin: "0 auto",
-        padding: "1rem"
+        padding: "1rem",
+        boxSizing: "border-box"
     }
 })
 
