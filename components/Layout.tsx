@@ -6,24 +6,26 @@ import ThemeContext from "../src/ThemeContext"
 import Background from "./Background"
 
 const styles = makeStyles({
-    navbar: { display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" },
-    centeringFlex: {
+    navbar: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+    },
+    a: {
+        display: "block",
+        fontFamily: "Rubik, sans-serif",
+        textDecoration: "none"
+    },
+    container: {
         position: "relative",
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        height: "100%"
-    },
-    mainFlex: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-        justifyContent: "space-between"
-    },
-    a: { display: "block", fontFamily: "Rubik, sans-serif", textDecoration: "none" }
+        justifyContent: "space-between",
+        minHeight: "100%",
+        margin: "0 auto",
+        padding: "1rem"
+    }
 })
 
 const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
@@ -55,16 +57,12 @@ const Layout = (props) => {
             <div ref={backgroundRef} style={{ position: "fixed", top: 0, bottom: 0, left: 0, right: 0 }}>
                 <Background pointerPosition={pointerPos} />
             </div>
-            <div style={styles.centeringFlex}>
-                <div style={styles.mainFlex} className="container">
-                    <div>
-                        <NavBar />
-                        <div style={{ padding: "2rem 0" }}>
-                            {props.children}
-                        </div>
-                    </div>
-                    <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", padding: "2rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
+            <div style={styles.container} className="container">
+                <div>
+                    <NavBar />
+                    {props.children}
                 </div>
+                <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "2rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
             </div>
         </div >
     )
