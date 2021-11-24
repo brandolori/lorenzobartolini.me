@@ -2,23 +2,31 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
-import Layout from "../components/Layout"
 import Container from "react-bootstrap/Container"
 import { Row, Image, Col } from "react-bootstrap"
-import React from "react"
+import React, { useContext } from "react"
 import ReactMarkdown from "react-markdown"
+import MarkdownRenderers from "../src/MarkdownRenderers"
+import PointerContext from "../src/PointerContext"
+import { useSpring, animated, config } from 'react-spring'
+
+
 
 
 const folderName = "pages-md"
 
-const MdContent = ({ htmlString, data }) => (
-    <>
-        <header>
-            <h1>{data.title}</h1>
-        </header>
-        <ReactMarkdown children={htmlString} />
-    </>
-)
+const MdContent = ({ htmlString, data }) => {
+    const [pointer,] = useContext(PointerContext)
+    const props = useSpring({ bottom: pointer.y * 3, left: pointer.x * 3 })
+    return (
+        <>
+            <header>
+                <animated.h1 style={{ position: "relative", transition: "none", ...props }}>ammmama</animated.h1>
+            </header>
+            <ReactMarkdown children={htmlString} />
+        </>
+    )
+}
 
 const Content = ({ htmlString, data }) => {
     if (data.image) {
@@ -44,19 +52,15 @@ const Content = ({ htmlString, data }) => {
     }
 }
 
-const Page = ({ htmlString, data }) => {
-
-    return (
-        <Layout>
-            <Head>
-                <title>{data.title}</title>
-            </Head>
-            <Container as="main" className="my-5">
-                <Content htmlString={htmlString} data={data}></Content>
-            </Container>
-        </Layout>
-    )
-}
+const Page = ({ htmlString, data }) =>
+    <>
+        <Head>
+            <title>{data.title}</title>
+        </Head>
+        <Container as="main" className="my-5">
+            <Content htmlString={htmlString} data={data}></Content>
+        </Container>
+    </>
 
 
 export const getStaticProps = async ({ params: { slug } }) => {

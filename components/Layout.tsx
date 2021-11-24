@@ -1,6 +1,9 @@
 import Link from "next/link"
+import { useContext, useRef, useState } from "react"
 import { Navbar, Nav, Container } from "react-bootstrap"
 import makeStyles from "../src/makeStyles"
+import PointerContext from "../src/PointerContext"
+import Background from "./Background"
 
 const styles = makeStyles({
     wrapper: {
@@ -32,14 +35,33 @@ const Footer = () => (
     </Container>
 )
 
-const Layout = (props) => (
-    <div style={styles.wrapper}>
-        <div>
-            <Header />
-            {props.children}
-        </div>
-        <Footer />
-    </div>
-)
+const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
+
+
+const Layout = (props) => {
+    const [pointerPos, setPointerPos] = useContext(PointerContext)
+
+    const backgroundRef = useRef<HTMLDivElement>()
+    return (
+        <>
+            <div style={{ width: "100%", height: "100%" }}
+                onPointerMove={(e) => {
+                    setPointerPos({
+                        x: 2 * normalize(e.clientX, window.innerWidth),
+                        y: -2 * normalize(e.clientY, window.innerHeight)
+                    })
+                }}>
+                <div ref={backgroundRef} style={{ position: "fixed", top: 0, bottom: 0, left: 0, right: 0 }}>
+                    <Background pointerPosition={pointerPos} />
+                </div>
+                <div style={{ position: "relative" }}>
+
+                    {props.children}
+
+                </div>
+            </div >
+        </>
+    )
+}
 
 export default Layout
