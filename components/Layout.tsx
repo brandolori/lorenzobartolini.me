@@ -1,66 +1,72 @@
 import Link from "next/link"
 import { useContext, useRef, useState } from "react"
-import { Navbar, Nav, Container } from "react-bootstrap"
 import makeStyles from "../src/makeStyles"
 import PointerContext from "../src/PointerContext"
+import ThemeContext from "../src/ThemeContext"
 import Background from "./Background"
 
 const styles = makeStyles({
-    wrapper: {
+    navbar: { display: "flex", alignItems: "center", justifyContent: "space-between", width: "100%" },
+    centeringFlex: {
+        position: "relative",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-between",
+        alignItems: "center",
+        width: "100%",
         height: "100%"
-    }
+    },
+    mainFlex: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        height: "100%",
+        justifyContent: "space-between"
+    },
+    a: { display: "block", fontFamily: "Rubik, sans-serif", textDecoration: "none" }
 })
-
-const Header = () => (
-    <Navbar bg="light" expand="lg" sticky="top">
-        <Link href="/" passHref><Navbar.Brand>Lorenzo Bartolini</Navbar.Brand></Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-                <Link href="/" passHref><Nav.Link>Home</Nav.Link></Link>
-                <Link href="/projects" passHref><Nav.Link>Projects</Nav.Link></Link>
-                <Link href="/about" passHref><Nav.Link>About</Nav.Link></Link>
-                <Link href="/contacts" passHref><Nav.Link>Contacts</Nav.Link></Link>
-            </Nav>
-        </Navbar.Collapse>
-    </Navbar >
-)
-
-const Footer = () => (
-    <Container as="footer" fluid className="text-center bg-light py-3">
-        Copyright Lorenzo Bartolini 2021
-    </Container>
-)
 
 const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
 
+const NavBar = () => {
+    const [theme,] = useContext(ThemeContext)
+
+    return <nav style={styles.navbar}>
+        <Link href="/"><a style={styles.a}>&lt;LorenzoBartolini /&gt;</a></Link>
+        <Link href="/about"><a style={styles.a}>about</a></Link>
+    </nav>
+}
 
 const Layout = (props) => {
     const [pointerPos, setPointerPos] = useContext(PointerContext)
 
     const backgroundRef = useRef<HTMLDivElement>()
+
+    const handlePointerMove = (e) => {
+        setPointerPos({
+            x: 2 * normalize(e.clientX, window.innerWidth),
+            y: -2 * normalize(e.clientY, window.innerHeight)
+        })
+    }
+
     return (
-        <>
-            <div style={{ width: "100%", height: "100%" }}
-                onPointerMove={(e) => {
-                    setPointerPos({
-                        x: 2 * normalize(e.clientX, window.innerWidth),
-                        y: -2 * normalize(e.clientY, window.innerHeight)
-                    })
-                }}>
-                <div ref={backgroundRef} style={{ position: "fixed", top: 0, bottom: 0, left: 0, right: 0 }}>
-                    <Background pointerPosition={pointerPos} />
+        <div style={{ width: "100%", height: "100%" }}
+            onPointerMove={handlePointerMove}>
+            <div ref={backgroundRef} style={{ position: "fixed", top: 0, bottom: 0, left: 0, right: 0 }}>
+                <Background pointerPosition={pointerPos} />
+            </div>
+            <div style={styles.centeringFlex}>
+                <div style={styles.mainFlex} className="container">
+                    <div>
+                        <NavBar />
+                        <div style={{ padding: "2rem 0" }}>
+                            {props.children}
+                        </div>
+                    </div>
+                    <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%", padding: "2rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
                 </div>
-                <div style={{ position: "relative" }}>
-
-                    {props.children}
-
-                </div>
-            </div >
-        </>
+            </div>
+        </div >
     )
 }
 

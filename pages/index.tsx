@@ -10,8 +10,8 @@ const Home = ({ slugs }) => <>
         <title>Lorenzo Bartolini</title>
         <link rel="icon" href="/favicon.ico" />
     </Head>
-    <main className="mb-0">
-        <h2>Welcome to my site!</h2>
+    <main style={{ width: "100%"}}>
+        <h1>Welcome to my site!</h1>
         <p>It is currently under construction. Still, here are some contents:</p>
         {
             slugs.map(slug => (

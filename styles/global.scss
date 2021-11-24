@@ -1,0 +1,44 @@
+html,
+body,
+#__next {
+    height: 100%;
+}
+
+html {
+    font-size: 1.25rem
+}
+
+* {
+    color: white;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Rubik', sans-serif;
+    color: var(--theme);
+}
+
+h1 {
+
+    font-size: 4rem;
+}
+
+h2 {
+    margin-top: 3rem;
+}
+
+* {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "segoe ui", Helvetica, Arial, sans-serif, "apple color emoji", "segoe ui emoji", "segoe ui symbol";
+}
+
+
+.container {
+    width: 90%;
+
+    @media (min-width: 768px) {
+        width: 50%;
+        max-width: 800px;
+    }
+}
