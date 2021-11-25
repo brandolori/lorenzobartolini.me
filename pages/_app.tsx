@@ -8,7 +8,7 @@ import "../styles/global.scss"
 
 function MyApp({ Component, pageProps }) {
 
-    const [theme, setTheme] = useState("orange")
+    const [theme, setTheme] = useState("#FFA500")
     const [pointer, setPointer] = useState({ x: 0, y: 0 })
 
     useEffect(() => {

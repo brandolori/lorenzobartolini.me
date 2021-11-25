@@ -20,16 +20,13 @@ const Pebble = (props) => {
     const [randomSize,] = useState(.15 + centeredRandom() * .1)
 
     const [color,] = useContext(ThemeContext)
-    return <><mesh
+    return <mesh
         {...props}
         rotation={randomRotation}
     >
-        <torusGeometry args={[randomSize, randomSize / 5, 150, 150]} />
+        <torusGeometry args={[randomSize, randomSize / 5, 20, 20]} />
         <meshStandardMaterial color={color} />
     </mesh >
-        {/* <pointLight intensity={.009}/> */}
-    </>
-
 }
 
 type SwarmProps = {
@@ -88,9 +85,15 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 export default ({ pointerPosition }: { pointerPosition: { x: number, y: number } }) => {
     const ContextBridge = useContextBridge(ThemeContext)
     const [theme,] = useContext(ThemeContext)
+    const [pixelRatio, setPixelRatio] = useState(1)
+
+    useEffect(() => {
+        setPixelRatio(window.devicePixelRatio)
+    }, [])
     return <>
         <Canvas
             linear
+            dpr={pixelRatio}
         >
             <ContextBridge>
 
@@ -116,7 +119,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     tensionVariance={75}
 
                     offsetVariance={5}
-                    size={15}
+                    size={10}
 
                     target={pointerPosition}
                 />
