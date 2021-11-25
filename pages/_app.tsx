@@ -10,13 +10,19 @@ function MyApp({ Component, pageProps }) {
     const [theme, setTheme] = useState("#FFA500")
     const [pointer, setPointer] = useState({ x: 5, y: 0 })
 
-    useEffect(() => {
-        document.documentElement.style.setProperty('--theme', theme);
-    }, [theme])
-
     return <>
         <Head>
             <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" />
+            <link rel="manifest" href="/manifest.json" />
+            <link rel="apple-touch-icon" href="/icons/192.png" />
+            <meta name="theme-color" content="#FFA500" />
+            <style>
+                {`
+:root {
+    --theme: ${theme} !important;
+}
+                `}
+            </style>
         </Head>
         <ThemeContext.Provider value={[theme, setTheme]}>
             <PointerContext.Provider value={[pointer, setPointer]}>
