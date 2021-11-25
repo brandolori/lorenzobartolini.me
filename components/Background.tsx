@@ -17,7 +17,7 @@ const centeredRandom = () => Math.random() - .5
 
 const Pebble = (props) => {
     const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(.15 + centeredRandom() * .1)
+    const [randomSize,] = useState(.15 + centeredRandom() * .12)
 
     const [color,] = useContext(ThemeContext)
     return <mesh
@@ -40,17 +40,14 @@ type SwarmProps = {
 }
 
 const Swarm = ({ target, size, offsetVariance, tension, tensionVariance, friction, frictionVariance }: SwarmProps) => {
-    const [params, setParams] = useState([])
-    useEffect(() => {
-        setParams(Array.from(Array(size)).map(() => ({
-            variance: {
-                x: randomBinomial() * offsetVariance,
-                y: randomBinomial() * offsetVariance
-            },
-            tension: tension + centeredRandom() * tensionVariance,
-            friction: friction + centeredRandom() * frictionVariance,
-        })))
-    }, [size, offsetVariance, tension, tensionVariance, friction, frictionVariance])
+    const [params,] = useState(Array.from(Array(size)).map(() => ({
+        variance: {
+            x: randomBinomial() * offsetVariance,
+            y: randomBinomial() * offsetVariance
+        },
+        tension: tension + centeredRandom() * tensionVariance,
+        friction: friction + centeredRandom() * frictionVariance,
+    })))
 
     return <>
         {params.map((el, i) =>
@@ -124,7 +121,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     tensionVariance={75}
 
                     offsetVariance={5}
-                    size={10}
+                    size={15}
 
                     target={target}
                 />
