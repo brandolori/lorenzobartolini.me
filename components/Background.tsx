@@ -115,10 +115,10 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     />
                 </Follower>
                 <Swarm
-                    friction={75}
+                    friction={100}
                     frictionVariance={75}
-                    tension={125}
-                    tensionVariance={75}
+                    tension={75}
+                    tensionVariance={50}
 
                     offsetVariance={5}
                     size={15}

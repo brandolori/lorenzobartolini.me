@@ -68,7 +68,7 @@ const Layout = (props) => {
                     <NavBar />
                     {props.children}
                 </div>
-                <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "2rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
+                <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
             </div>
         </div >
     )
