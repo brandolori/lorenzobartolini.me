@@ -1,6 +1,5 @@
-// import "bootstrap/dist/css/bootstrap.min.css"
 import Head from "next/head"
-import React, { createContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../components/Layout"
 import PointerContext from "../src/PointerContext"
 import ThemeContext from "../src/ThemeContext"

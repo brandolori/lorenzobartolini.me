@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import fs from "fs"
 import Link from "next/link"
-import Layout from "../components/Layout"
 import path from "path"
 import React from 'react'
 import AnimatedHeader from '../components/AnimatedHeader'

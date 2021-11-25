@@ -1,8 +1,8 @@
 {
-    "name": "Lorenzo Bartolini Website",
+    "name": "Lorenzo Bartolini's Personal Blog",
     "short_name": "Lorenzo Bartolini",
-    "theme_color": "#2196f3",
-    "background_color": "#2196f3",
+    "theme_color": "#FFA500",
+    "background_color": "#202020",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",

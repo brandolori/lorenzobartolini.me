@@ -1,7 +1,5 @@
-import { Figure, Carousel, Fade } from "react-bootstrap"
-import { createElement, useContext } from "react";
+import { useContext } from "react";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import PointerContext from "./PointerContext";
 
 function flatten(text, child): string {
