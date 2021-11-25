@@ -87,6 +87,7 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 
 export default ({ pointerPosition }: { pointerPosition: { x: number, y: number } }) => {
     const ContextBridge = useContextBridge(ThemeContext)
+    const [theme,] = useContext(ThemeContext)
     return <>
         <Canvas
             linear
@@ -98,6 +99,16 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     <planeGeometry args={[100, 300]} />
                     <meshStandardMaterial color="#202020" />
                 </mesh>
+                <Follower
+                    friction={75}
+                    tension={125}
+                    target={pointerPosition}
+                >
+                    <pointLight
+                        intensity={.4}
+                        color={theme}
+                    />
+                </Follower>
                 <Swarm
                     friction={75}
                     frictionVariance={75}
