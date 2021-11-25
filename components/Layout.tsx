@@ -47,8 +47,8 @@ const Layout = (props) => {
 
     const handlePointerMove = (e) => {
         setPointerPos({
-            x: 2 * normalize(e.clientX, window.innerWidth),
-            y: -2 * normalize(e.clientY, window.innerHeight)
+            x: normalize(e.clientX, window.innerWidth),
+            y: -normalize(e.clientY, window.innerHeight)
         })
     }
 

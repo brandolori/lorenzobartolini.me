@@ -9,7 +9,7 @@ import "../styles/global.scss"
 function MyApp({ Component, pageProps }) {
 
     const [theme, setTheme] = useState("#FFA500")
-    const [pointer, setPointer] = useState({ x: 0, y: 0 })
+    const [pointer, setPointer] = useState({ x: 100, y: 0 })
 
     useEffect(() => {
         document.documentElement.style.setProperty('--theme', theme);

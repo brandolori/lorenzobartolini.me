@@ -81,14 +81,19 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
     </animated.group >
 }
 
+const targetMultiplier = 2
 
 export default ({ pointerPosition }: { pointerPosition: { x: number, y: number } }) => {
     const ContextBridge = useContextBridge(ThemeContext)
     const [theme,] = useContext(ThemeContext)
     const [pixelRatio, setPixelRatio] = useState(1)
 
+    const target = { x: pointerPosition.x * targetMultiplier, y: pointerPosition.y * targetMultiplier }
+
     useEffect(() => {
-        setPixelRatio(window.devicePixelRatio)
+        //set pixel ratio to the device pixel ratio, if lower than 1
+        //needs to be inside a userEffect because it needs the window object
+        setPixelRatio(Math.min(window.devicePixelRatio, 1))
     }, [])
     return <>
         <Canvas
@@ -105,7 +110,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                 <Follower
                     friction={75}
                     tension={125}
-                    target={pointerPosition}
+                    target={target}
                 >
                     <pointLight
                         intensity={.4}
@@ -121,11 +126,10 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     offsetVariance={5}
                     size={10}
 
-                    target={pointerPosition}
+                    target={target}
                 />
                 <EffectComposer >
                     <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={250} intensity={.4} />
-                    <Noise opacity={0.03} />
                     <Vignette eskil={false} offset={0.1} darkness={0.4} />
                 </EffectComposer>
             </ContextBridge>
