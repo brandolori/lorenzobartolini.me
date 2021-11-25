@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import PointerContext from "../src/PointerContext"
 import ThemeContext from "../src/ThemeContext"
 import "../styles/global.scss"
+import { GoogleFonts } from "nextjs-google-fonts/GoogleFonts";
 
 function MyApp({ Component, pageProps }) {
 
@@ -12,10 +13,10 @@ function MyApp({ Component, pageProps }) {
 
     return <>
         <Head>
-            <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet" />
             <link rel="manifest" href="/manifest.json" />
             <link rel="apple-touch-icon" href="/icons/192.png" />
             <meta name="theme-color" content="#FFA500" />
+            {GoogleFonts()}
             <style>
                 {`
 :root {

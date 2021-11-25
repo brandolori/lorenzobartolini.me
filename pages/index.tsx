@@ -29,7 +29,7 @@ const Home = ({ slugs }) => <>
     </Head>
     <main style={{ width: "100%" }}>
         <AnimatedHeader title="Welcome to my site!" />
-        {posts.map((el, i) => <>
+        {posts.map((el, i) =>
             <div
                 style={{ margin: "5rem 0" }}
                 key={i}>
@@ -47,7 +47,7 @@ const Home = ({ slugs }) => <>
                 </Link>
                 <p >{el.summary}</p>
             </div>
-        </>
+
         )}
     </main>
 </>
