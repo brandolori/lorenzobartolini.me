@@ -32,6 +32,14 @@ So, I am not a designer. From the get go, I knew that if I wanted to build somet
 The first decision was on the typography: I went about tackling this task through the old art of _taking inspiration_ from somone else's work.
 
 I settled on a sans-serif default system font for the paragraph was a good idea, as it will blend in with what the user is used to seeing, and will also help load the page faster, and **Rubik** for the titles. It looked really nice, expecialy with the orange theme that I had decided on.
+![Rubik font demonstration](rubik.webp)
 
 Fun fact: the precise color (#FFA500) was chosen because I grew fond of the default CSS "orange" color, that I was using for testing.
 
+## Deep dive: the background
+
+## About performance
+
+## About accessibility
+
+## And the content?
