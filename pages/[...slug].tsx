@@ -2,13 +2,15 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
-import React, { useContext } from "react"
+import React from "react"
 import ReactMarkdown from "react-markdown"
-import PointerContext from "../src/PointerContext"
-import { useSpring, animated, config } from 'react-spring'
 import AnimatedHeader from "../components/AnimatedHeader"
+import { SpecialComponents } from "react-markdown/lib/ast-to-react"
+import { NormalComponents } from "react-markdown/lib/complex-types"
 
 const folderName = "pages-md"
+
+const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> = { a: ({ href, children }) => <a href={href} target="_blank">{children}</a> }
 
 const Page = ({ htmlString, data }) => {
     return <>
@@ -19,7 +21,7 @@ const Page = ({ htmlString, data }) => {
         <header>
             <AnimatedHeader title={data.title} />
         </header>
-        <ReactMarkdown children={htmlString} />
+        <ReactMarkdown components={components} children={htmlString} />
 
     </>
 }
