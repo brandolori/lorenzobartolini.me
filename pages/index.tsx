@@ -4,28 +4,18 @@ import Link from "next/link"
 import path from "path"
 import React from 'react'
 import AnimatedHeader from '../components/AnimatedHeader'
-
+import matter from 'gray-matter'
 
 type PostPreviewData = {
     date: string,
     title: string,
-    summary: string
+    summary: string,
+    href: string
 }
 
-const lorem = "Lorem ipsum dolor sit amet, consectetur adipisci elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur."
-
-const posts: PostPreviewData[] = [
-    { date: "10 September 2021", title: "Building this site", summary: lorem },
-    { date: "4 November 2021", title: "The new developments of the open source community", summary: lorem },
-    { date: "10 September 2021", title: "Building this site", summary: lorem },
-    { date: "4 November 2021", title: "The new developments of the open source community", summary: lorem },
-    { date: "10 September 2021", title: "Building this site", summary: lorem },
-]
-
-const Home = ({ slugs }) => <>
+const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
     <Head>
         <title>Lorenzo Bartolini</title>
-        <link rel="icon" href="/favicon.ico" />
     </Head>
     <main style={{ width: "100%" }}>
         <AnimatedHeader title="Welcome to my site!" />
@@ -34,7 +24,7 @@ const Home = ({ slugs }) => <>
                 style={{ margin: "5rem 0" }}
                 key={i}>
                 <small>{el.date}</small>
-                <Link href={"/"}>
+                <Link href={el.href}>
                     <a className="post-title"
                         style={{
                             fontFamily: "'Rubik', sans-serif",
@@ -53,15 +43,17 @@ const Home = ({ slugs }) => <>
 </>
 
 export const getStaticProps = async () => {
-    const files = fs.readdirSync(path.join("pages-md", "posts"))
+
+    const folderPath = path.join("pages-md", "posts")
+    const posts = fs.readdirSync(folderPath)
+        .map(filePath => ({ string: fs.readFileSync(path.join(folderPath, filePath)).toString(), path: filePath }))
+        .map(data => ({ ...matter(data.string).data, href: `/posts/${data.path.replace(".md", "")}` }))
     return {
         props: {
-            slugs: files.map(name => name.replace(".md", "")).map(el => ({
-                "name": el,
-                "path": "posts/" + el
-            }))
+            posts
         }
     }
 }
+
 
 export default Home

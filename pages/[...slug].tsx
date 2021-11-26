@@ -15,7 +15,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
 const Page = ({ htmlString, data }) => {
     return <>
         <Head>
-            <title>{data.title}</title>
+            <title>{data.title} - Lorenzo Bartolini</title>
         </Head>
 
         <header>
