@@ -17,14 +17,14 @@ const centeredRandom = () => Math.random() - .5
 
 const Pebble = (props) => {
     const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(.1 + centeredRandom() * .08)
+    const [randomSize,] = useState(.15 + centeredRandom() * .12)
 
     const [color,] = useContext(ThemeContext)
     return <mesh
         {...props}
         rotation={randomRotation}
     >
-        <torusGeometry args={[randomSize, randomSize / 5, 20, 20]} />
+        <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
         <meshStandardMaterial color={color} />
     </mesh >
 }
@@ -110,8 +110,8 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     target={target}
                 >
                     <pointLight
-                        distance={3}
-                        intensity={.7}
+                        // distance={3}
+                        intensity={.6}
                         color={theme}
                     />
                 </Follower>
