@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         <Head>
             <link rel="manifest" href="/manifest.json" />
             <link rel="apple-touch-icon" href="/icons/192.png" />
-            <meta name="theme-color" content="#FFA500" />
+            <meta name="theme-color" content={theme} />
             {GoogleFonts()}
             <style>
                 {`
