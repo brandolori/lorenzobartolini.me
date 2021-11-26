@@ -121,7 +121,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                     tension={75}
                     tensionVariance={50}
 
-                    offsetVariance={5}
+                    offsetVariance={7}
                     size={15}
 
                     target={target}

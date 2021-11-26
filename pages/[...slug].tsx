@@ -2,7 +2,7 @@ import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
 import Head from "next/head"
-import React from "react"
+import React, { createContext, useContext } from "react"
 import ReactMarkdown from "react-markdown"
 import AnimatedHeader from "../components/AnimatedHeader"
 import { SpecialComponents } from "react-markdown/lib/ast-to-react"
@@ -10,9 +10,20 @@ import { NormalComponents } from "react-markdown/lib/complex-types"
 
 const folderName = "pages-md"
 
-const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> = { a: ({ href, children }) => <a href={href} target="_blank">{children}</a> }
+const SlugContext = createContext("")
 
-const Page = ({ htmlString, data }) => {
+const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> = {
+    a: ({ href, children }) => <a href={href} target="_blank">{children}</a>,
+    img: ({ src, alt, title }) => {
+        const slug = useContext(SlugContext)
+        return <figure style={{ margin: "3rem", textAlign: "center" }}>
+            <img draggable="false" style={{ borderRadius: "4px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
+            <figcaption>{title}</figcaption>
+        </figure>
+    }
+}
+
+const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => {
     return <>
         <Head>
             <title>{data.title} - Lorenzo Bartolini</title>
@@ -21,7 +32,9 @@ const Page = ({ htmlString, data }) => {
         <header>
             <AnimatedHeader title={data.title} />
         </header>
-        <ReactMarkdown components={components} children={htmlString} />
+        <SlugContext.Provider value={slug.join("/")}>
+            <ReactMarkdown components={components} children={htmlString} />
+        </SlugContext.Provider>
 
     </>
 }
@@ -38,7 +51,9 @@ export const getStaticProps = async ({ params: { slug } }) => {
     return {
         props: {
             htmlString,
-            data: parsedMarkdown.data
+            data: parsedMarkdown.data,
+            // pass the slug so the post can access its media in the public folder
+            slug
         }
     }
 }
