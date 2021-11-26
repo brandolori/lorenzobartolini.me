@@ -17,7 +17,7 @@ const centeredRandom = () => Math.random() - .5
 
 const Pebble = (props) => {
     const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(.15 + centeredRandom() * .12)
+    const [randomSize,] = useState(.1 + centeredRandom() * .08)
 
     const [color,] = useContext(ThemeContext)
     return <mesh
@@ -42,8 +42,8 @@ type SwarmProps = {
 const Swarm = ({ target, size, offsetVariance, tension, tensionVariance, friction, frictionVariance }: SwarmProps) => {
     const [params,] = useState(Array.from(Array(size)).map(() => ({
         variance: {
-            x: randomBinomial() * offsetVariance,
-            y: randomBinomial() * offsetVariance
+            x: centeredRandom() * offsetVariance,
+            y: centeredRandom() * offsetVariance
         },
         tension: tension + centeredRandom() * tensionVariance,
         friction: friction + centeredRandom() * frictionVariance,
@@ -106,11 +106,12 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                 </mesh>
                 <Follower
                     friction={75}
-                    tension={125}
+                    tension={200}
                     target={target}
                 >
                     <pointLight
-                        intensity={.4}
+                        distance={3}
+                        intensity={.7}
                         color={theme}
                     />
                 </Follower>

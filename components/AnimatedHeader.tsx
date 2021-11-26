@@ -18,6 +18,7 @@ export default ({ title }: { title: string }) => {
             width: "fit-content",
             transition: "none",
             perspective: "500px",
+            margin:"4rem 0",
             ...props
         }}>
         {title}
