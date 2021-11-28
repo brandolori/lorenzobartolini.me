@@ -73,3 +73,14 @@ ol * {
         0px 0px 8px #202020,
         0px 0px 8px #202020;
 }
+
+pre {
+    overflow-x: scroll;
+    background-color: #1a1a1ace;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+code {
+    font-family: monospace;
+}

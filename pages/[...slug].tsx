@@ -23,6 +23,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
     }
 }
 
+
 const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => {
     return <>
         <Head>

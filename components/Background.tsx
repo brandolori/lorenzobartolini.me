@@ -99,7 +99,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
         >
             <ContextBridge>
 
-                <ambientLight intensity={.8} />
+                <ambientLight intensity={.7} />
                 <mesh position={[0, 0, -1]}>
                     <planeGeometry args={[100, 300]} />
                     <meshStandardMaterial color="#202020" />
@@ -111,7 +111,7 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
                 >
                     <pointLight
                         // distance={3}
-                        intensity={.6}
+                        intensity={.7}
                         color={theme}
                     />
                 </Follower>
