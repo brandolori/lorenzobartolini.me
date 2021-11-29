@@ -6,8 +6,4 @@ module.exports = withGoogleFonts({
             "https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap",
         ],
     },
-    i18n: {
-        locales: ["en"],
-        defaultLocale: "en",
-    },
 });
