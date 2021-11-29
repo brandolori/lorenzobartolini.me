@@ -13,7 +13,7 @@ const folderName = "pages-md"
 const SlugContext = createContext("")
 
 const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> = {
-    a: ({ href, children }) => <a href={href} target="_blank">{children}</a>,
+    a: ({ href, children }) => <a href={href} rel="noopener" target="_blank">{children}</a>,
     img: ({ src, alt, title }) => {
         const slug = useContext(SlugContext)
         return <figure style={{ margin: "3rem", textAlign: "center" }}>
@@ -28,6 +28,7 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
     return <>
         <Head>
             <title>{data.title} - Lorenzo Bartolini</title>
+            <meta name="description" content={data.summary} />
         </Head>
 
         <header>
