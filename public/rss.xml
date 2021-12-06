@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>lorenzobartolini.me</title>
+        <link>https://lorenzobartolini.me</link>
+        <description>Lorenzo Bartolini personal blog</description>
+        <lastBuildDate>Mon, 06 Dec 2021 19:45:43 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <copyright>2021 Lorenzo Bartolini</copyright>
+        <category>Tech</category>
+        <item>
+            <title><![CDATA[About this site - part 1]]></title>
+            <link>https://lorenzobartolini.me/posts/about-this-website-1</link>
+            <guid>https://lorenzobartolini.me/posts/about-this-website-1</guid>
+            <description><![CDATA[Come this winter, I wanted to find a place to both show off all the cool tricks I learn and write short blog stories talking about my experiences. I remembered I had a website that I only had been using to test npm packages in a production setting, and I decided to do something with it.]]></description>
+            <author>lori.barto@live.it (Lorenzo Bartolini)</author>
+        </item>
+    </channel>
+</rss>
