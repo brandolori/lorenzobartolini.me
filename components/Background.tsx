@@ -2,8 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 import { EffectComposer, DepthOfField, Bloom, Noise, Vignette } from '@react-three/postprocessing'
-import ThemeContext from '../src/ThemeContext'
-import { useContextBridge } from '@react-three/drei'
+import { theme } from '../src/common'
 
 const randomBinomial = () => {
     let u = 0, v = 0;
@@ -19,13 +18,12 @@ const Pebble = (props) => {
     const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
     const [randomSize,] = useState(.12 + centeredRandom() * .12)
 
-    const [color,] = useContext(ThemeContext)
     return <mesh
         {...props}
         rotation={randomRotation}
     >
         <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
-        <meshStandardMaterial color={color} />
+        <meshStandardMaterial color={theme.mainColor} />
     </mesh >
 }
 
@@ -81,56 +79,59 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 const targetMultiplier = 2
 
 export default ({ pointerPosition }: { pointerPosition: { x: number, y: number } }) => {
-    const ContextBridge = useContextBridge(ThemeContext)
-    const [theme,] = useContext(ThemeContext)
     const [pixelRatio, setPixelRatio] = useState(1)
+    const [offScreen, setOffScreen] = useState(true)
 
-    const target = { x: pointerPosition.x * targetMultiplier, y: pointerPosition.y * targetMultiplier }
+    const target = offScreen ? { x: 10, y: 0 } : { x: pointerPosition.x * targetMultiplier, y: pointerPosition.y * targetMultiplier }
 
+    //set pixel ratio to the device pixel ratio, if lower than 1
+    //needs to be inside a userEffect because it needs the window object
     useEffect(() => {
-        //set pixel ratio to the device pixel ratio, if lower than 1
-        //needs to be inside a userEffect because it needs the window object
         setPixelRatio(Math.min(window.devicePixelRatio, 1))
+    }, [])
+
+    //after load, start targeting pointer position
+    useEffect(() => {
+        setTimeout(() => {
+            setOffScreen(false)
+        }, 100)
     }, [])
     return <>
         <Canvas
             linear
             dpr={pixelRatio}
         >
-            <ContextBridge>
-
-                <ambientLight intensity={.7} />
-                <mesh position={[0, 0, -1]}>
-                    <planeGeometry args={[100, 300]} />
-                    <meshStandardMaterial color="#202020" />
-                </mesh>
-                <Follower
-                    friction={75}
-                    tension={200}
-                    target={target}
-                >
-                    <pointLight
-                        // distance={3}
-                        intensity={.7}
-                        color={theme}
-                    />
-                </Follower>
-                <Swarm
-                    friction={100}
-                    frictionVariance={75}
-                    tension={75}
-                    tensionVariance={50}
-
-                    offsetVariance={7}
-                    size={15}
-
-                    target={target}
+            <ambientLight intensity={.7} />
+            <mesh position={[0, 0, -1]}>
+                <planeGeometry args={[100, 300]} />
+                <meshStandardMaterial color={theme.backgroundColor} />
+            </mesh>
+            <Follower
+                friction={75}
+                tension={200}
+                target={target}
+            >
+                <pointLight
+                    // distance={3}
+                    intensity={.7}
+                    color={theme.mainColor}
                 />
-                <EffectComposer >
-                    <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={250} intensity={.4} />
-                    <Vignette eskil={false} offset={0.1} darkness={0.4} />
-                </EffectComposer>
-            </ContextBridge>
+            </Follower>
+            <Swarm
+                friction={100}
+                frictionVariance={75}
+                tension={75}
+                tensionVariance={50}
+
+                offsetVariance={7}
+                size={15}
+
+                target={target}
+            />
+            <EffectComposer >
+                <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={250} intensity={.4} />
+                <Vignette eskil={false} offset={0.1} darkness={0.4} />
+            </EffectComposer>
         </Canvas>
     </>
 }

@@ -19,6 +19,21 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
         <meta name="description" content="Lorenzo Bartolini's tech blog, home of what I learn and want to share with the web, or just of what I found cool." />
     </Head>
     <main style={{ width: "100%" }}>
+        <style jsx>{`
+            a {
+                font-size: calc(1rem + 5vw);
+                font-family: 'Rubik', sans-serif;
+                color: var(--theme);
+                margin: 1rem 0;
+                display: block;
+            }
+
+            @media (min-width: 576px) {
+                a {
+                    font-size: 2.5rem;
+                }
+            }
+            `}</style>
         <AnimatedHeader title="Welcome to my site!" />
         {posts.map((el, i) =>
             <div
@@ -26,13 +41,7 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
                 key={i}>
                 <small>{el.date}</small>
                 <Link href={el.href}>
-                    <a className="post-title"
-                        style={{
-                            fontFamily: "'Rubik', sans-serif",
-                            color: "var(--theme)",
-                            margin: "1rem 0",
-                            display: "block"
-                        }}>
+                    <a>
                         {el.title}
                     </a>
                 </Link>

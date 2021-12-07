@@ -2,7 +2,6 @@ import Link from "next/link"
 import { useContext, useRef, useState } from "react"
 import makeStyles from "../src/makeStyles"
 import PointerContext from "../src/PointerContext"
-import ThemeContext from "../src/ThemeContext"
 
 import dynamic from 'next/dynamic'
 
@@ -29,13 +28,19 @@ const styles = makeStyles({
         margin: "0 auto",
         padding: "1rem",
         boxSizing: "border-box"
+    },
+    footer: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "1.5rem",
+        fontSize: ".8rem", fontWeight: 200
     }
 })
 
 const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
 
 const NavBar = () => {
-    const [theme,] = useContext(ThemeContext)
 
     return <nav style={styles.navbar}>
         <Link href="/"><a style={styles.a}>&lt;LorenzoBartolini /&gt;</a></Link>
@@ -45,8 +50,6 @@ const NavBar = () => {
 
 const Layout = (props) => {
     const [pointerPos, setPointerPos] = useContext(PointerContext)
-
-    const backgroundRef = useRef<HTMLDivElement>()
 
     const handlePointerMove = (e) => {
         setPointerPos({
@@ -60,7 +63,7 @@ const Layout = (props) => {
             onPointerDown={handlePointerMove}
             onPointerMove={handlePointerMove}
         >
-            <div ref={backgroundRef} style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh", backgroundColor: "#202020" }}>
+            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh", backgroundColor: "#202020" }}>
                 <Background pointerPosition={pointerPos} />
             </div>
             <div style={styles.container} className="container">
@@ -68,7 +71,7 @@ const Layout = (props) => {
                     <NavBar />
                     {props.children}
                 </div>
-                <footer style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "1.5rem", fontSize: ".8rem", fontWeight: 200 }}> Copyright 2021 Lorenzo Bartolini</footer>
+                <footer style={styles.footer}> Copyright 2021 Lorenzo Bartolini</footer>
             </div>
         </div >
     )

@@ -16,7 +16,17 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
     a: ({ href, children }) => <a href={href} rel="noopener" target="_blank">{children}</a>,
     img: ({ src, alt, title }) => {
         const slug = useContext(SlugContext)
-        return <figure style={{ margin: "3rem", textAlign: "center" }}>
+        return <figure>
+            <style jsx>{`
+            figure {
+                margin: 2rem 1rem;
+            }
+            @media (min-width: 768px) {
+                figure {
+                    margin: 3rem;
+                }
+            }
+            `}</style>
             <img draggable="false" style={{ borderRadius: "4px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
             <figcaption>{title}</figcaption>
         </figure>
