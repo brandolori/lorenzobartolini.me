@@ -39,7 +39,7 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
             <div
                 style={{ margin: "5rem 0" }}
                 key={i}>
-                <small>{el.date}</small>
+                <small>{new Date(el.date).toDateString()}</small>
                 <Link href={el.href}>
                     <a>
                         {el.title}

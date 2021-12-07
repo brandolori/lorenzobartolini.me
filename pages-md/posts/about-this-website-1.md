@@ -1,6 +1,6 @@
 ---
 title: About this site - part 1
-date: November 26, 2021
+date: "2021-11-26"
 summary: "Come this winter, I wanted to find a place to both show off all the cool tricks I learn and write short blog stories talking about my experiences. I remembered I had a website that I only had been using to test npm packages in a production setting, and I decided to do something with it."
 ---
 

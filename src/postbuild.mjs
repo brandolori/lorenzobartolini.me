@@ -32,12 +32,14 @@ const posts = fs.readdirSync(folderPath)
             url: filePath.replace(".md", "")
         });
     })
+
 posts.forEach(({ data, url }) => {
     feed.addItem({
         title: data.title,
         link: `https://lorenzobartolini.me/posts/${url}`,
         description: data.summary,
-        author: [lorib]
+        author: [lorib],
+        date: new Date(data.date)
     });
 });
 

@@ -17,7 +17,10 @@ const styles = makeStyles({
     a: {
         display: "block",
         fontFamily: "Rubik, sans-serif",
-        textDecoration: "none"
+        textDecoration: "none",
+    },
+    aRight: {
+        margin: "0px 1rem"
     },
     container: {
         position: "relative",
@@ -34,19 +37,22 @@ const styles = makeStyles({
         flexDirection: "column",
         alignItems: "center",
         padding: "1.5rem",
-        fontSize: ".8rem", fontWeight: 200
+        fontSize: ".8rem",
+        fontWeight: 200
     }
 })
 
 const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
 
-const NavBar = () => {
-
-    return <nav style={styles.navbar}>
+const NavBar = () => <>
+    <nav style={styles.navbar}>
         <Link href="/"><a style={styles.a}>&lt;LorenzoBartolini /&gt;</a></Link>
-        <Link href="/about"><a style={styles.a}>about</a></Link>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+            <a href="/rss.xml" target="_blank" style={{ ...styles.a, ...styles.aRight }}>rss</a>
+            <Link href="/about"><a style={styles.a}>about</a></Link>
+        </div>
     </nav>
-}
+</>
 
 const Layout = (props) => {
     const [pointerPos, setPointerPos] = useContext(PointerContext)

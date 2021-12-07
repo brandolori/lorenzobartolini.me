@@ -44,6 +44,7 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
         <header>
             <AnimatedHeader title={data.title} />
         </header>
+        <small>{new Date(data.date).toDateString()}</small>
         <SlugContext.Provider value={slug.join("/")}>
             <ReactMarkdown components={components} children={htmlString} />
         </SlugContext.Provider>

@@ -4,7 +4,7 @@
         <title>lorenzobartolini.me</title>
         <link>https://lorenzobartolini.me</link>
         <description>Lorenzo Bartolini personal blog</description>
-        <lastBuildDate>Tue, 07 Dec 2021 11:41:47 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Dec 2021 13:06:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
@@ -14,6 +14,7 @@
             <title><![CDATA[About this site - part 1]]></title>
             <link>https://lorenzobartolini.me/posts/about-this-website-1</link>
             <guid>https://lorenzobartolini.me/posts/about-this-website-1</guid>
+            <pubDate>Fri, 26 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Come this winter, I wanted to find a place to both show off all the cool tricks I learn and write short blog stories talking about my experiences. I remembered I had a website that I only had been using to test npm packages in a production setting, and I decided to do something with it.]]></description>
             <author>lori.barto@live.it (Lorenzo Bartolini)</author>
         </item>
