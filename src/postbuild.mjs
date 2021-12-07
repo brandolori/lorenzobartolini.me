@@ -1,7 +1,7 @@
-const { Feed } = require("feed")
-const fs = require("fs")
-const matter = require("gray-matter")
-const path = require("path")
+import { Feed } from "feed"
+import fs from "fs"
+import matter from "gray-matter"
+import path from "path"
 
 const baseUrl = "https://lorenzobartolini.me"
 

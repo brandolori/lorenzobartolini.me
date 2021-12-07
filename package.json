@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node src/postbuild.mjs",
     "export": "next export",
     "start": "next start"
   },
