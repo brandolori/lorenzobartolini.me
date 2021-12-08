@@ -1,5 +1,5 @@
 ---
-title: Building a minecraf server on a single board computer
+title: Building a minecraft server on a single board computer
 date: "2021-12-08"
 summary: "Come this winter, I wanted to find a place to both show off all the cool tricks I learn and write short blog stories talking about my experiences. I remembered I had a website that I only had been using to test npm packages in a production setting, and I decided to do something with it."
 ---
@@ -18,7 +18,7 @@ Time and time again, the perfect excuse to keep it plugged to my router has been
 ## Enter the beast
 The Asus Tinkerboard (original, not S, not 2) has a quad core 32 bit ARM SOC from Rockchip, 2GB of LPDDR3 RAM, and a pretty standard IO.
 
-![The Asus Tinkerboard](tinker.webp "Here it is, in all its glory. Credid Asus")
+![The Asus Tinkerboard](tinker.webp "Here it is, in all its glory. Credit Asus")
 
 It is the best kind of powerful: just powerful enough. This forces you to get creative in finding solutions and ways to optimize for your use case, which for my taste is the entire fun of the process
 
@@ -32,4 +32,19 @@ The next step is a bit more difficult.
 That is, minecraft needs Java. The first time I attempted this task, I barely knew how Java worked and tried searching for an answer on how to install it on google. This sent me spiraling in a maze of non working answers and dead-end paths
 [[non ricordo se c'è su apt-controllare]]
 
-Until one day, I found [Jabba](https://github.com/shyiko/jabba). Shout out to my OOP course in university for suggesting it as a way to install java! It's a quite powerful tool, automatically listing the available jdk distributions for your platform and os, and letting you install and switch between them with ease. This served me well for a long time, 
+Until one day, I found [Jabba](https://github.com/shyiko/jabba). Shout out to my OOP course in university for suggesting it as a way to install java! It's a quite powerful tool, automatically listing the available jdk distributions for your platform and os, and letting you install and switch between them with ease. This served me well for a long time, until recently when minecraft 1.18 came out, and I was faced with the task of upgrading to Java 17.
+
+[[foto jabba]]
+
+## The Javaest of them all
+So, the situation was this: Jabba relies on a .json index file to list the available java versions. This .json, located in the root folder of the repository, is updated once in a while by the jabba mantainers, and serves as the default way you fint and install java using jabba. The problem was that for some reason the index had not been updated to feature a 32 bit arm version of the Java 17 JDK, not even _one_.
+
+At first I was afraid this was the end. It had finally come the time when nobody cared about my architecture anymore, and surely everyone had stopped building the new java for it.
+
+But I didn't despair, and started looking for solutions. It turns out that somone was -in fact- building for arm32: Bellsoft, in the form of [Liberica](https://bell-sw.com/pages/downloads/), among others. Still, I wanted to keep using jabba as it was a good way to upgrade java in the future, and it would take care of setting all the environment variables for me.
+
+Fortunately the jabba developers thought of this use case, and there is a built in way to install a java distribution through a download link.
+
+![Jabba use instructions](jabba-url.webp "See? There it is")
+
+So here
