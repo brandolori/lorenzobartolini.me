@@ -26,12 +26,13 @@ const folderPath = path.join("pages-md", "posts")
 const posts = fs.readdirSync(folderPath)
     .map(filePath => {
         const string = fs.readFileSync(path.join(folderPath, filePath)).toString()
-        const { content, data } = matter(string)
+        const { data } = matter(string)
         return ({
             data,
             url: filePath.replace(".md", "")
         });
     })
+    .sort((a, b) => a.data.date > b.data.date ? -1 : 1)
 
 posts.forEach(({ data, url }) => {
     feed.addItem({

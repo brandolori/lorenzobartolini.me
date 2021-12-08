@@ -56,8 +56,14 @@ export const getStaticProps = async () => {
 
     const folderPath = path.join("pages-md", "posts")
     const posts = fs.readdirSync(folderPath)
-        .map(filePath => ({ string: fs.readFileSync(path.join(folderPath, filePath)).toString(), path: filePath }))
-        .map(data => ({ ...matter(data.string).data, href: `/posts/${data.path.replace(".md", "")}` }))
+        .map(filePath => {
+            const { data } = matter(fs.readFileSync(path.join(folderPath, filePath)).toString())
+            return {
+                ...data,
+                href: `/posts/${filePath.replace(".md", "")}`
+            } as any
+        })
+        .sort((a, b) => a.date > b.date ? -1 : 1)
     return {
         props: {
             posts
