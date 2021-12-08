@@ -47,4 +47,15 @@ Fortunately the jabba developers thought of this use case, and there is a built 
 
 ![Jabba use instructions](jabba-url.webp "See? There it is")
 
-So here
+So here we are, with a fresh copy of Java 17 on our snappy new Armbian installation. How about actually getting the game on there?
+
+## Getting the game on there
+The simple answer would be to go to the [minecraft website](https://www.minecraft.net/en-us/download/server), download the "vanilla" .jar and start it. This does work, but the official server is notoriously slow and inefficient, and god only knows how much we need efficiency right now. So let's try something better.
+
+[**Spigot**](https://www.spigotmc.org/) is a faster, plugin-compatible version of a minecraft server. It features many performance improvements over vanilla, and lets you tweak the settings to configure the game to be more performance oriented if needed. But we can do better.
+
+[**Paper**](https://papermc.io/), based on Spigot, is an even faster minecraft server, based on what I can only assume is dar wizardry. On top of all the changes that Spigot makes to the vanilla server, it adds even more modifications to make your server run even better.
+
+There are even faster and more bleeding-edge servers out there, but the sweet spot for performance and stability seems to be Paper. To install it, you just need to go to the right page and download the latest .jar.
+
+## 
