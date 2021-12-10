@@ -41,11 +41,13 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
                 style={{ margin: "5rem 0" }}
                 key={i}>
                 <small>{new Date(el.date).toDateString()}</small>
-                <Link href={el.href}>
-                    <a>
-                        {el.title}
-                    </a>
-                </Link>
+                <h2>
+                    <Link href={el.href}>
+                        <a>
+                            {el.title}
+                        </a>
+                    </Link>
+                </h2>
                 <p >{el.summary}</p>
             </div>
 

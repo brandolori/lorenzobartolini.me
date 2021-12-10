@@ -1,11 +1,10 @@
 import Link from "next/link"
-import { useContext, useRef, useState } from "react"
+import { PointerEventHandler, useContext, useRef, useState } from "react"
 import makeStyles from "../src/makeStyles"
 import PointerContext from "../src/PointerContext"
-
 import dynamic from 'next/dynamic'
 import useInterval from "../src/useInterval"
-import { theme } from "../src/common"
+import useIsMobile from "../src/useIsMobile"
 
 const Background = dynamic(() => import("./Background"))
 
@@ -59,16 +58,25 @@ const NavBar = () => <>
 let latestPointer = { x: 0, y: 0 }
 
 const Layout = (props) => {
-    const [pointerPos, setPointerPos] = useContext(PointerContext)
+    // should always stay between -1 and 1 in both axes
+    const [pointer, setPointer] = useState({ x: 0, y: 0 })
+    const mobile = useIsMobile()
 
     useInterval(() => {
-        setPointerPos(latestPointer)
-    }, 50)
+        setPointer(latestPointer)
+        if (mobile)
+            latestPointer = { x: 0, y: latestPointer.y - Math.sign(latestPointer.y) / 50 }
+    }, 100)
 
-    const handlePointerMove = (e) => {
-        latestPointer = {
-            x: normalize(e.clientX, window.innerWidth),
-            y: -normalize(e.clientY, window.innerHeight)
+    const handlePointerMove: PointerEventHandler<HTMLDivElement> = (e) => {
+        if (mobile) {
+            const y = Math.min(Math.max(latestPointer.y + e.movementY / 50, -1), 1)
+            latestPointer = { x: 0, y }
+        } else {
+            latestPointer = {
+                x: normalize(e.clientX, window.innerWidth),
+                y: -normalize(e.clientY, window.innerHeight)
+            }
         }
     }
 
@@ -76,16 +84,26 @@ const Layout = (props) => {
         <div style={{ width: "100%", height: "100%" }}
             onPointerMove={handlePointerMove}
         >
+            <style jsx>{`
+            @media (min-width: 768px) {
+                .container {
+                    width: 57%;
+                    max-width: 800px;
+                }
+            }
+            `}</style>
             <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
-                <Background pointerPosition={pointerPos} />
+                <Background pointerPosition={pointer} />
             </div>
-            <div style={styles.container} className="container">
-                <div>
-                    <NavBar />
-                    {props.children}
+            <PointerContext.Provider value={pointer}>
+                <div style={styles.container} className="container">
+                    <div>
+                        <NavBar />
+                        {props.children}
+                    </div>
+                    <footer style={styles.footer}> Copyright 2021 Lorenzo Bartolini</footer>
                 </div>
-                <footer style={styles.footer}> Copyright 2021 Lorenzo Bartolini</footer>
-            </div>
+            </PointerContext.Provider>
         </div >
     )
 }

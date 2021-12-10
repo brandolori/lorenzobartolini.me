@@ -6,22 +6,36 @@ import PointerContext from "../src/PointerContext"
 const absHyperbole = (x: number) => Math.sign(x) * Math.abs(x) / (Math.abs(x) + 1)
 
 export default ({ title }: { title: string }) => {
-    const [pointer,] = useContext(PointerContext)
+    const pointer = useContext(PointerContext)
     const props = useSpring({
         bottom: absHyperbole(pointer.y) * 10,
         left: absHyperbole(pointer.x) * 10
     })
-    return <animated.h1
-        style={{
-            position: "relative",
-            display: "block",
-            width: "fit-content",
-            transition: "none",
-            perspective: "500px",
-            margin:"4rem 0",
-            ...props
-        }}>
-        {title}
-    </animated.h1>
+    return <div>
+        <style jsx>{`
+        // calibrato circa per smettere di stare nello schermo quando la navbar si accavalla
+        h1 {
+            font-size: calc(2.3rem + 5vw);
+        }
+        @media (min-width: 576px) {
+            h1 {
+                font-size: 4rem;
+            }
+        }
+        `}</style>
+        <h1>
+            <animated.span
+                style={{
+                    fontFamily: "inherit",
+                    color: "inherit",
+                    position: "relative",
+                    width: "fit-content",
+                    margin: "4rem 0",
+                    ...props
+                }}>
+                {title}
+            </animated.span>
+        </h1>
+    </div>
 
 }

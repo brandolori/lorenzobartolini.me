@@ -46,7 +46,14 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
         </header>
         <small>{new Date(data.date).toDateString()}</small>
         <SlugContext.Provider value={slug.join("/")}>
-            <ReactMarkdown components={components} children={htmlString} />
+            <div>
+                <style jsx>{`
+                h2 {
+                    margin-top: 3rem;
+                }
+                `}</style>
+                <ReactMarkdown components={components} children={htmlString} />
+            </div>
         </SlugContext.Provider>
 
     </>
