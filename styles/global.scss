@@ -7,12 +7,12 @@
 }
 
 a {
-    text-decoration-color: var(--theme);
+    text-decoration-color: var(--maincolor);
 }
 
 html {
     font-size: 1.25rem;
-    background-color: #141414;
+    background-color: var(--backgroundcolor);
 }
 
 * {
@@ -25,7 +25,7 @@ h2,
 h3,
 h4 {
     font-family: 'Rubik', sans-serif;
-    color: var(--theme);
+    color: var(--maincolor);
 }
 
 // calibrato circa per smettere di stare nello schermo quando la navbar si accavalla
@@ -43,7 +43,7 @@ h2 {
 
 *::selection {
     color: #1A1A1A;
-    background: var(--theme);
+    background: var(--maincolor);
     text-shadow: none;
 }
 
@@ -62,8 +62,8 @@ p {
 p,
 ol * {
     text-shadow:
-        0px 0px 8px #202020,
-        0px 0px 8px #202020;
+        0px 0px 8px var(--backgroundcolor),
+        0px 0px 8px var(--backgroundcolor);
 }
 
 pre {

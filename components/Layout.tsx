@@ -4,6 +4,8 @@ import makeStyles from "../src/makeStyles"
 import PointerContext from "../src/PointerContext"
 
 import dynamic from 'next/dynamic'
+import useInterval from "../src/useInterval"
+import { theme } from "../src/common"
 
 const Background = dynamic(() => import("./Background"))
 
@@ -54,22 +56,27 @@ const NavBar = () => <>
     </nav>
 </>
 
+let latestPointer = { x: 0, y: 0 }
+
 const Layout = (props) => {
     const [pointerPos, setPointerPos] = useContext(PointerContext)
 
+    useInterval(() => {
+        setPointerPos(latestPointer)
+    }, 50)
+
     const handlePointerMove = (e) => {
-        setPointerPos({
+        latestPointer = {
             x: normalize(e.clientX, window.innerWidth),
             y: -normalize(e.clientY, window.innerHeight)
-        })
+        }
     }
 
     return (
         <div style={{ width: "100%", height: "100%" }}
-            onPointerDown={handlePointerMove}
             onPointerMove={handlePointerMove}
         >
-            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh", backgroundColor: "#202020" }}>
+            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
                 <Background pointerPosition={pointerPos} />
             </div>
             <div style={styles.container} className="container">

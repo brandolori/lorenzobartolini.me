@@ -5,6 +5,7 @@ import path from "path"
 import React from 'react'
 import AnimatedHeader from '../components/AnimatedHeader'
 import matter from 'gray-matter'
+import { theme } from '../src/common'
 
 type PostPreviewData = {
     date: string,
@@ -23,7 +24,7 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
             a {
                 font-size: calc(1rem + 5vw);
                 font-family: 'Rubik', sans-serif;
-                color: var(--theme);
+                color: ${theme.mainColor};
                 margin: 1rem 0;
                 display: block;
             }

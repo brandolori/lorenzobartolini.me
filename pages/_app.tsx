@@ -19,7 +19,8 @@ function MyApp({ Component, pageProps }) {
             <style>
                 {`
                     :root {
-                        --theme: ${theme.mainColor} !important;
+                        --maincolor: ${theme.mainColor} !important;
+                        --backgroundcolor: ${theme.backgroundColor} !important;
                     }
                 `}
             </style>
