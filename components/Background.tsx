@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
-import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import { theme } from '../src/common'
 
 const randomBinomial = () => {
@@ -13,19 +12,6 @@ const randomBinomial = () => {
 }
 
 const centeredRandom = () => Math.random() - .5
-
-const Pebble = (props) => {
-    const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(.12 + centeredRandom() * .12)
-
-    return <mesh
-        {...props}
-        rotation={randomRotation}
-    >
-        <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
-        <meshStandardMaterial color={theme.mainColor} />
-    </mesh >
-}
 
 type SwarmProps = {
     target: { x: number, y: number },
@@ -55,7 +41,6 @@ const Swarm = ({ target, size, offsetVariance, tension, tensionVariance, frictio
     </>
 }
 
-
 type FollowerProps = {
     target: { x: number, y: number },
     tension: number,
@@ -74,6 +59,19 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
     >
         {children}
     </animated.group >
+}
+
+const Pebble = (props) => {
+    const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
+    const [randomSize,] = useState(.08 + centeredRandom() * .08)
+
+    return <mesh
+        {...props}
+        rotation={randomRotation}
+    >
+        <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
+        <meshBasicMaterial color={theme.mainColor} />
+    </mesh >
 }
 
 const targetMultiplier = 2
@@ -99,24 +97,10 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
     return <>
         <Canvas
             linear
+            flat
             dpr={pixelRatio}
+            camera={{ fov: 93.75, near: 0.1, far: 1000, position: [0, 0, 4] }}
         >
-            <ambientLight intensity={.7} />
-            <mesh position={[0, 0, -1]}>
-                <planeGeometry args={[100, 300]} />
-                <meshStandardMaterial color={theme.backgroundColor} />
-            </mesh>
-            <Follower
-                friction={75}
-                tension={200}
-                target={target}
-            >
-                <pointLight
-                    // distance={3}
-                    intensity={.7}
-                    color={theme.mainColor}
-                />
-            </Follower>
             <Swarm
                 friction={100}
                 frictionVariance={75}
@@ -128,10 +112,6 @@ export default ({ pointerPosition }: { pointerPosition: { x: number, y: number }
 
                 target={target}
             />
-            <EffectComposer >
-                <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={250} intensity={.4} />
-                <Vignette eskil={false} offset={0.1} darkness={0.4} />
-            </EffectComposer>
         </Canvas>
     </>
 }
