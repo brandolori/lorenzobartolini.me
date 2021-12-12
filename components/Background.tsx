@@ -78,7 +78,6 @@ const Pebble = (props) => {
 const targetMultiplier = 2
 
 export default () => {
-    console.log("RERENDER", Math.random())
     const [pixelRatio, setPixelRatio] = useState(1)
     const [offScreen, setOffScreen] = useState(true)
     const pointerPosition = useContext(PointerContext)

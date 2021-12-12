@@ -34,30 +34,29 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
 }
 
 
-const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => {
-    return <>
-        <Head>
-            <title>{data.title} - Lorenzo Bartolini</title>
-            <meta name="description" content={data.summary} />
-        </Head>
+const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => <>
+    <Head>
+        <title>{data.title} - Lorenzo Bartolini</title>
+        <meta name="description" content={data.summary} />
+    </Head>
 
-        <header>
-            <AnimatedHeader title={data.title} />
-        </header>
-        <small>{new Date(data.date).toDateString()}</small>
-        <SlugContext.Provider value={slug.join("/")}>
-            <div>
-                <style jsx>{`
+    <header>
+        <AnimatedHeader title={data.title} />
+    </header>
+    <small>{new Date(data.date).toDateString()}</small>
+    <SlugContext.Provider value={slug.join("/")}>
+        <div>
+            <style jsx>{`
                 h2 {
                     margin-top: 3rem;
                 }
                 `}</style>
-                <ReactMarkdown components={components} children={htmlString} />
-            </div>
-        </SlugContext.Provider>
+            <ReactMarkdown components={components} children={htmlString} />
+        </div>
+    </SlugContext.Provider>
 
-    </>
-}
+</>
+
 
 
 export const getStaticProps = async ({ params: { slug } }) => {
