@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 import { theme } from '../src/common'
+import PointerContext from '../src/PointerContext'
 
 const randomBinomial = () => {
     let u = 0, v = 0;
@@ -76,9 +77,10 @@ const Pebble = (props) => {
 
 const targetMultiplier = 2
 
-export default ({ pointerPosition }: { pointerPosition: { x: number, y: number } }) => {
+export default () => {
     const [pixelRatio, setPixelRatio] = useState(1)
     const [offScreen, setOffScreen] = useState(true)
+    const pointerPosition = useContext(PointerContext)
 
     const target = offScreen ? { x: 10, y: 0 } : { x: pointerPosition.x * targetMultiplier, y: pointerPosition.y * targetMultiplier }
 

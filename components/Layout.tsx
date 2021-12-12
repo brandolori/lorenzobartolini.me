@@ -1,10 +1,11 @@
 import Link from "next/link"
-import { PointerEventHandler, useContext, useRef, useState } from "react"
+import { PointerEventHandler, TouchEventHandler, useContext, useRef, useState } from "react"
 import makeStyles from "../src/makeStyles"
 import PointerContext from "../src/PointerContext"
 import dynamic from 'next/dynamic'
 import useInterval from "../src/useInterval"
 import useIsMobile from "../src/useIsMobile"
+import useScrollPosition from "../src/useScrollPosition"
 
 const Background = dynamic(() => import("./Background"))
 
@@ -60,42 +61,39 @@ let latestPointer = { x: 0, y: 0 }
 const Layout = (props) => {
     // should always stay between -1 and 1 in both axes
     const [pointer, setPointer] = useState({ x: 0, y: 0 })
-    const mobile = useIsMobile()
+    const mobile = true //useIsMobile()
+    const scrollref = useRef()
+    const scrollPosition = useScrollPosition(scrollref)
 
     useInterval(() => {
-        setPointer(latestPointer)
         if (mobile)
-            latestPointer = { x: 0, y: latestPointer.y - Math.sign(latestPointer.y) / 50 }
-    }, 100)
+            latestPointer = { x: 0, y: normalize(scrollPosition, 1) }
+        setPointer(latestPointer)
+    }, 50)
 
     const handlePointerMove: PointerEventHandler<HTMLDivElement> = (e) => {
-        if (mobile) {
-            const y = Math.min(Math.max(latestPointer.y + e.movementY / 50, -1), 1)
-            latestPointer = { x: 0, y }
-        } else {
-            latestPointer = {
-                x: normalize(e.clientX, window.innerWidth),
-                y: -normalize(e.clientY, window.innerHeight)
-            }
+        latestPointer = {
+            x: normalize(e.clientX, window.innerWidth),
+            y: -normalize(e.clientY, window.innerHeight)
         }
     }
 
     return (
-        <div style={{ width: "100%", height: "100%" }}
-            onPointerMove={handlePointerMove}
+        <div ref={scrollref} style={{ width: "100%", height: "100%" }}
+            onPointerMove={mobile ? undefined : handlePointerMove}
         >
-            <style jsx>{`
-            @media (min-width: 768px) {
-                .container {
-                    width: 57%;
-                    max-width: 800px;
-                }
-            }
-            `}</style>
-            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
-                <Background pointerPosition={pointer} />
-            </div>
             <PointerContext.Provider value={pointer}>
+                <style jsx>{`
+                    @media (min-width: 768px) {
+                        .container {
+                            width: 57%;
+                            max-width: 800px;
+                        }
+                    }
+                `}</style>
+                <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
+                    <Background />
+                </div>
                 <div style={styles.container} className="container">
                     <div>
                         <NavBar />
