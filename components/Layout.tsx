@@ -1,14 +1,9 @@
 import Link from "next/link"
-import { PointerEventHandler, TouchEventHandler, useContext, useEffect, useRef, useState } from "react"
 import makeStyles from "../src/makeStyles"
-import PointerContext from "../src/PointerContext"
 import dynamic from 'next/dynamic'
-import useInterval from "../src/useInterval"
-import useIsMobile from "../src/useIsMobile"
-import useScrollPosition from "../src/useScrollPosition"
-import { normalize } from "../src/common"
 import MobilePointerContext from "./MobilePointerContext"
 import DesktopPointerContext from "./DesktopPointerContext"
+import useIsMobile from "../src/useIsMobile"
 
 const Background = dynamic(() => import("./Background"))
 
@@ -60,7 +55,7 @@ const NavBar = () => <>
 let latestPointer = { x: 0, y: 0 }
 
 const Layout = (props) => {
-    const PointerProvider = true ? MobilePointerContext : DesktopPointerContext
+    const PointerProvider = useIsMobile() ? MobilePointerContext : DesktopPointerContext
     return (
         <PointerProvider>
             <style jsx>{`

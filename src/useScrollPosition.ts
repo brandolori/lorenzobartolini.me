@@ -1,21 +1,19 @@
 import { MutableRefObject, useEffect, useState } from "react";
-import { debounce } from "lodash"
+import createDebouncer from "./createDebouncer";
 
 
 export default (ref: MutableRefObject<HTMLElement>) => {
     const [pos, setPos] = useState(0)
+
     useEffect(() => {
-        const el = ref.current
+        const debouncer = createDebouncer()
         const callback = () => {
-            setPos(window.scrollY / (el.scrollHeight - el.clientHeight))
+            debouncer(() => {
+                setPos(window.scrollY / (ref.current.scrollHeight - ref.current.clientHeight))
+            })
         }
-        // console.table({
-        //     scroll: el.scrollHeight,
-        //     client: el.clientHeight,
-        //     scrollY,
-        //     pos
-        // })
         window.addEventListener("scroll", callback)
+
         return () => window.removeEventListener("scroll", callback)
     })
     return pos
