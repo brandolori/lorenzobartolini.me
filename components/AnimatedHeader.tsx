@@ -1,16 +1,18 @@
 import { useContext } from "react"
 import { animated, useSpring } from "react-spring"
 import PointerContext from "../src/PointerContext"
+import useIsMobile from "../src/useIsMobile"
 
 //compute the function y=x/(x+1), mirrored on the y axis.
 const absHyperbole = (x: number) => Math.sign(x) * Math.abs(x) / (Math.abs(x) + 1)
 
 export default ({ title }: { title: string }) => {
     const pointer = useContext(PointerContext)
-    const props = useSpring({
+    const h1Spring = useSpring({
         bottom: absHyperbole(pointer.y) * 10,
         left: absHyperbole(pointer.x) * 10
     })
+    const animatedProps = useIsMobile() ? {} : h1Spring
     return <div>
         <style jsx>{`
         // calibrato circa per smettere di stare nello schermo quando la navbar si accavalla
@@ -31,7 +33,7 @@ export default ({ title }: { title: string }) => {
                     position: "relative",
                     width: "fit-content",
                     margin: "4rem 0",
-                    ...props
+                    ...animatedProps
                 }}>
                 {title}
             </animated.span>
