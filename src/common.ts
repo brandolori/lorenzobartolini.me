@@ -3,4 +3,6 @@ const theme = {
     backgroundColor: "#23272f"
 }
 
-export { theme }
+const normalize = (value: number, range: number) => ((value - (range / 2)) / (range / 2))
+
+export { theme, normalize }
