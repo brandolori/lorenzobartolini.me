@@ -17,7 +17,7 @@ type PostPreviewData = {
 const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
     <Head>
         <title>Lorenzo Bartolini</title>
-        <meta name="description" content="Lorenzo Bartolini's tech blog, home of what I learn and want to share with the web, or just of what I found cool." />
+        <meta name="description" content="Lorenzo Bartolini's personal blog, home of what I learn and want to share with the web, or just of what I found cool." />
     </Head>
     <main style={{ width: "100%" }}>
         <style jsx>{`
