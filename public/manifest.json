@@ -2,7 +2,7 @@
     "name": "Lorenzo Bartolini's Personal Blog",
     "short_name": "Lorenzo Bartolini",
     "theme_color": "#FFA500",
-    "background_color": "#202020",
+    "background_color": "#23272f",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
