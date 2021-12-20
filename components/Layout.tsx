@@ -4,8 +4,10 @@ import dynamic from 'next/dynamic'
 import MobilePointerContext from "./MobilePointerContext"
 import DesktopPointerContext from "./DesktopPointerContext"
 import useIsMobile from "../src/useIsMobile"
+import React from "react"
+import Background from "./Background"
 
-const Background = dynamic(() => import("./Background"))
+// const Background = dynamic(() => import("./Background"))
 
 const styles = makeStyles({
     navbar: {
