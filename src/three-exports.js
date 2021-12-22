@@ -33,9 +33,17 @@ export { Group } from 'three/src/objects/Group.js';
 // export { CubeTexture } from 'three/src/textures/CubeTexture.js';
 // export { CanvasTexture } from 'three/src/textures/CanvasTexture.js';
 // export { DepthTexture } from 'three/src/textures/DepthTexture.js';
-export { Texture } from 'three/src/textures/Texture.js'; //TODO
-export * from 'three/src/geometries/Geometries.js';
-export * from 'three/src/materials/Materials.js';
+export { Texture } from 'three/src/textures/Texture.js';
+
+// Export only the geometries and materials that I need
+
+// export * from 'three/src/geometries/Geometries.js';
+// export * from 'three/src/materials/Materials.js';
+
+export * from 'three/src/materials/MeshBasicMaterial';
+export * from 'three/src/geometries/TorusGeometry';
+
+
 // export { AnimationLoader } from 'three/src/loaders/AnimationLoader.js';
 // export { CompressedTextureLoader } from 'three/src/loaders/CompressedTextureLoader.js';
 // export { CubeTextureLoader } from 'three/src/loaders/CubeTextureLoader.js';
@@ -63,8 +71,8 @@ export * from 'three/src/materials/Materials.js';
 // export { Light } from 'three/src/lights/Light.js';
 // export { LightProbe } from 'three/src/lights/LightProbe.js';
 // export { StereoCamera } from 'three/src/cameras/StereoCamera.js';
-export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js'; //TODO
-export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'; //TODO
+export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
+// export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'; //GENERATES ERRORS
 // export { CubeCamera } from 'three/src/cameras/CubeCamera.js';
 // export { ArrayCamera } from 'three/src/cameras/ArrayCamera.js';
 export { Camera } from 'three/src/cameras/Camera.js';
@@ -96,7 +104,7 @@ export { Camera } from 'three/src/cameras/Camera.js';
 // export { GLBufferAttribute } from 'three/src/core/GLBufferAttribute.js';
 // export * from 'three/src/core/BufferAttribute.js';
 // export { Object3D } from 'three/src/core/Object3D.js';
-export { Raycaster } from 'three/src/core/Raycaster.js'; //TODO
+export { Raycaster } from 'three/src/core/Raycaster.js';
 export { Layers } from 'three/src/core/Layers.js';
 // export { EventDispatcher } from 'three/src/core/EventDispatcher.js';
 export { Clock } from 'three/src/core/Clock.js';
