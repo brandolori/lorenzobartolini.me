@@ -4,6 +4,8 @@ import { useSpring, animated } from '@react-spring/three'
 import { theme } from '../src/common'
 import PointerContext from '../src/PointerContext'
 
+console.log("LOAD THE BOIIIS")
+
 const randomBinomial = () => {
     let u = 0, v = 0;
     while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
@@ -81,6 +83,8 @@ export default () => {
     const [pixelRatio, setPixelRatio] = useState(1)
     const [offScreen, setOffScreen] = useState(true)
     const pointerPosition = useContext(PointerContext)
+
+    console.log("RENDER THE BOIIII")
 
     const target = offScreen ? { x: 10, y: 0 } : { x: pointerPosition.x * targetMultiplier, y: pointerPosition.y * targetMultiplier }
 

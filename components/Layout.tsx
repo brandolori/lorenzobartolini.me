@@ -4,10 +4,10 @@ import dynamic from 'next/dynamic'
 import MobilePointerContext from "./MobilePointerContext"
 import DesktopPointerContext from "./DesktopPointerContext"
 import useIsMobile from "../src/useIsMobile"
-import React from "react"
-import Background from "./Background"
+import React, { useEffect, useState } from "react"
+// import Background from "./Background"
 
-// const Background = dynamic(() => import("./Background"))
+const Background = dynamic(() => import("./Background"))
 
 const styles = makeStyles({
     navbar: {
@@ -58,6 +58,11 @@ let latestPointer = { x: 0, y: 0 }
 
 const Layout = (props) => {
     const PointerProvider = useIsMobile() ? MobilePointerContext : DesktopPointerContext
+    const [renderBackground, setRenderBackground] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => setRenderBackground(true), 2000)
+    }, [])
     return (
         <PointerProvider>
             <style jsx>{`
@@ -69,7 +74,7 @@ const Layout = (props) => {
                     }
                     `}</style>
             <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
-                <Background />
+                {renderBackground && <Background />}
             </div>
             <div style={styles.container} className="container">
                 <div>
