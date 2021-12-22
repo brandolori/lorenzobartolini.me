@@ -15,8 +15,8 @@ const MyApp = ({ Component, pageProps }) => <>
     <Layout>
         <style jsx global>{`
             :root {
-                --maincolor: ${theme.mainColor} !important;
-                --backgroundcolor: ${theme.backgroundColor} !important;
+                --maincolor: ${theme.mainColor};
+                --backgroundcolor: ${theme.backgroundColor};
             }
 
             #__next {
@@ -63,8 +63,7 @@ const MyApp = ({ Component, pageProps }) => <>
             h2,
             h3,
             h4 {
-                text-shadow:
-                    0px 0px 8px var(--backgroundcolor),
+                text-shadow: 0px 0px 8px var(--backgroundcolor);
             }
             
             p,

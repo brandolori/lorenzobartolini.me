@@ -58,10 +58,12 @@ let latestPointer = { x: 0, y: 0 }
 
 const Layout = (props) => {
     const PointerProvider = useIsMobile() ? MobilePointerContext : DesktopPointerContext
+
+    // defer the loading of the background by three seconds, allowing the page to become interactive faster
     const [renderBackground, setRenderBackground] = useState(false)
 
     useEffect(() => {
-        setTimeout(() => setRenderBackground(true), 2000)
+        setTimeout(() => setRenderBackground(true), 3000)
     }, [])
     return (
         <PointerProvider>
