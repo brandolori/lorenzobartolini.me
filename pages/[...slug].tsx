@@ -27,10 +27,17 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
                 }
             }
             `}</style>
-            <img draggable="false" style={{ borderRadius: "4px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
+            {alt == "video" &&
+                <video style={{ maxHeight: 500, margin: "1rem auto", display: "block", borderRadius: "6px" }} controls>
+                    <source src={`/${slug}/${src}`} type="video/webm" />
+                    Your browser does not support the video tag.
+                </video>}
+            {alt != "video" &&
+                <img draggable="false" style={{ borderRadius: "6px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
+            }
             <figcaption>{title}</figcaption>
         </figure>
-    }
+    },
 }
 
 
@@ -51,7 +58,7 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
                     margin-top: 3rem;
                 }
                 `}</style>
-            <ReactMarkdown components={components} children={htmlString} />
+            <ReactMarkdown components={components} skipHtml={false} children={htmlString} />
         </div>
     </SlugContext.Provider>
 
