@@ -38,15 +38,20 @@ const MyApp = ({ Component, pageProps }) => <>
             
             * {
                 color: white;
-                font-family: Georgia, serif;
+                font-family: ${theme.contentFont};
             }
             
             h1,
             h2,
             h3,
             h4 {
-                font-family: 'Rubik', sans-serif;
+                font-family: ${theme.headingFont};
                 color: var(--maincolor);
+                text-shadow: 0px 0px 8px var(--backgroundcolor);
+            }
+
+            h1 {
+                letter-spacing: -2px;
             }
             
             *::selection {
@@ -58,14 +63,7 @@ const MyApp = ({ Component, pageProps }) => <>
             p {
                 line-height: 1.5rem;
             }
-            
-            h1,
-            h2,
-            h3,
-            h4 {
-                text-shadow: 0px 0px 8px var(--backgroundcolor);
-            }
-            
+                        
             p,
             ol * {
                 text-shadow:

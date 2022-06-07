@@ -17,11 +17,12 @@ export default ({ title }: { title: string }) => {
         <style jsx>{`
         // calibrato circa per smettere di stare nello schermo quando la navbar si accavalla
         h1 {
-            font-size: calc(2.3rem + 5vw);
+            font-size: calc(3rem + 5vw);
+            line-height: 100%;
         }
         @media (min-width: 576px) {
             h1 {
-                font-size: 4rem;
+                font-size: 4.4rem;
             }
         }
         `}</style>

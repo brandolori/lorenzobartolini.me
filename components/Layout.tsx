@@ -5,6 +5,7 @@ import MobilePointerContext from "./MobilePointerContext"
 import DesktopPointerContext from "./DesktopPointerContext"
 import useIsMobile from "../src/useIsMobile"
 import React, { useEffect, useState } from "react"
+import { theme } from "../src/common"
 // import Background from "./Background"
 
 const Background = dynamic(() => import("./Background"))
@@ -18,8 +19,10 @@ const styles = makeStyles({
     },
     a: {
         display: "block",
-        fontFamily: "Rubik, sans-serif",
+        fontFamily: theme.headingFont,
         textDecoration: "none",
+        fontWeight: "bold",
+        fontSize: "1.15rem"
     },
     aRight: {
         margin: "0px 1rem"

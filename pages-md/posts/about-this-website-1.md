@@ -44,7 +44,7 @@ I starded by CTRL-C CTRL-Ving the sample react-three-fiber project, and started 
 
 That evolved when I found that react-three-fiber had a companion animation library, based on react-spring. It looked like I found what I was looking for: objects that followed the mouse pointer in a way that looked like natural movement. 
 
-```ts
+```tsx
 type FollowerProps = {
     target: { x: number, y: number },
     tension: number,
@@ -58,7 +58,6 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
         config: { tension, friction },
     })
     return <animated.group
-        //@ts-ignore
         position={boxPosition}
     >
         {children}

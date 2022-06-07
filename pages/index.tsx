@@ -22,16 +22,17 @@ const Home = ({ posts }: { posts: PostPreviewData[] }) => <>
     <main style={{ width: "100%" }}>
         <style jsx>{`
             a {
-                font-size: calc(1rem + 5vw);
-                font-family: 'Rubik', sans-serif;
+                font-size: calc(1.2rem + 5vw);
+                font-family: ${theme.headingFont};
                 color: ${theme.mainColor};
                 margin: 1rem 0;
                 display: block;
+                line-height: 105%;
             }
 
             @media (min-width: 576px) {
                 a {
-                    font-size: 2.5rem;
+                    font-size: 2.7rem;
                 }
             }
             `}</style>

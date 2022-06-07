@@ -34,6 +34,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
                 </video>}
             {alt != "video" &&
                 <img draggable="false" style={{ borderRadius: "6px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
+                // <div style={{ width: "100%", height: 400, backgroundImage: `url(/${slug}/${src})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}></div>
             }
             <figcaption>{title}</figcaption>
         </figure>
