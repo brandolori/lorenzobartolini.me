@@ -6,7 +6,7 @@ summary: "whois Lorenzo Bartolini"
 
 ## Who am I?
 
-Hi! I'm Lorenzo. I'm 22 years old. I live in Santarcangelo, Italy.
+Hi! I'm Lorenzo. I'm 23 years old. I live in Santarcangelo, Italy.
 
 I'm a student and a developer.
 

@@ -86,7 +86,7 @@ const Layout = (props) => {
                     <NavBar />
                     {props.children}
                 </div>
-                <footer style={styles.footer}> Copyright 2021 Lorenzo Bartolini</footer>
+                <footer style={styles.footer}> Copyright 2022 Lorenzo Bartolini</footer>
             </div>
         </PointerProvider>
     )
