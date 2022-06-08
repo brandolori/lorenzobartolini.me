@@ -11,6 +11,7 @@ export { Texture } from 'three/src/textures/Texture.js';
 // export * from 'three/src/materials/Materials.js';
 export * from 'three/src/materials/MeshBasicMaterial';
 export * from 'three/src/geometries/TorusGeometry';
+export * from 'three/src/geometries/BoxGeometry';
 
 export { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
 // export { OrthographicCamera } from 'three/src/cameras/OrthographicCamera.js'; //GENERATES ERRORS

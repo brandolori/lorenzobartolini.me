@@ -8,7 +8,7 @@ import React, { useEffect, useState } from "react"
 import { theme } from "../src/common"
 // import Background from "./Background"
 
-const Background = dynamic(() => import("./Background"))
+const Background = dynamic(() => import("./Background"), { ssr: false })
 
 const styles = makeStyles({
     navbar: {
