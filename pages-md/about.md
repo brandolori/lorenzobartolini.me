@@ -18,4 +18,4 @@ I currently specialize in game and web development, mainly with web technologies
 If you need to contact me just write an email!
 
 email - <lori.barto@live.it>  
-[linkedin](https://www.linkedin.com/in/lorenzo-bartolini-64abb81a9/)
+linkedin - [profile](https://www.linkedin.com/in/lorenzo-bartolini-64abb81a9/)
