@@ -1,7 +1,6 @@
 import Head from "next/head"
 import React, { useState } from "react"
 import Layout from "../components/Layout"
-import { GoogleFonts } from "nextjs-google-fonts/GoogleFonts";
 import { theme } from "../src/common"
 
 const MyApp = ({ Component, pageProps }) => <>
@@ -9,7 +8,6 @@ const MyApp = ({ Component, pageProps }) => <>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icons/192.png" />
         <meta name="theme-color" content={theme.mainColor} />
-        {GoogleFonts()}
     </Head>
 
     <Layout>

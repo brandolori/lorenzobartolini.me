@@ -1,8 +1,13 @@
 import { useContext, useEffect, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, extend } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 import { theme } from '../src/common'
 import PointerContext from '../src/PointerContext'
+
+// this apparently only works if you use v8's createRoot API
+// as per https://github.com/pmndrs/react-three-babel
+// import { Mesh, BoxGeometry, MeshBasicMaterial, TorusGeometry } from 'three'
+// extend({ Mesh, BoxGeometry, MeshBasicMaterial, TorusGeometry })
 
 const randomBinomial = () => {
     let u = 0, v = 0;
@@ -95,7 +100,6 @@ export default () => {
     }, [])
     return <>
         <Canvas
-            linear
             flat
             // this works only because we're dynamic loading, so no ssr
             dpr={Math.min(window.devicePixelRatio, 1)}
