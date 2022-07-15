@@ -1,19 +1,28 @@
 ---
 title: Lab Gamedev! 
-date: "2022-07-10"
+date: "2022-07-15"
 summary: "..."
 ---
 
-## Link
+## Ciao!
 
-Editor Construct 3 ⚙ - [link](https://editor.construct.net/)  
-- Username: bran_r  
-- Password: NS2021TC
+Questa è la pagina del laboratorio Game Dev del campo scout **#cambioprospettiva** del 2022.
 
-Libreria musicale gratuita 🎵 - [link](https://gamesounds.xyz/?dir=Public%20Domain/Reggae)
+Durante il laboratorio i ragazzi hanno creato tre piccoli giochi!
 
-## File
+eccoli:
 
-Progetto di partenza 😉 - [download](/progetto_spettine.c3p)  
-Pacchetto grafica 🌻 - [download](/grafica_spettine.zip)  
-Pacchetto effetti sonori 🔈 - [download](/effetti_sonori_spettine.zip)  
+## Gruppo 1
+*Chiara e Lay*  
+[Provalo!](/spettine22/1/index.html)  
+[Download dei file del progetto](/spettine22/spettine22-1.c3p)
+
+## Gruppo 2
+*Emma e Paolo*  
+[Provalo!](/spettine22/2/index.html)  
+[Download dei file del progetto](/spettine22/spettine22-2.c3p)
+
+## Gruppo 3
+*Alessandro ed Agnese*  
+[Provalo!](/spettine22/3/index.html)  
+[Download dei file del progetto](/spettine22/spettine22-3.c3p)
