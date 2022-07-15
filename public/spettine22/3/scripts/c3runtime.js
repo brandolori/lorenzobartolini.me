@@ -3900,10 +3900,11 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Platform.Cnds.CompareSpeed,
 		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Cnds.EveryTick,
-		C3.Behaviors.Platform.Acts.SimulateControl,
 		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.Sprite.Acts.RotateCounterclockwise,
 		C3.Plugins.Touch.Cnds.OnTouchStart,
+		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Behaviors.Platform.Acts.SimulateControl,
 		C3.Plugins.Sprite.Cnds.OnCollision,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.Sprite.Acts.Destroy,
@@ -3939,6 +3940,8 @@ self.C3_JsPropNameTable = [
 	{TiledBackground: 0},
 	{TiledBackground2: 0},
 	{Audio: 0},
+	{Anchor: 0},
+	{Animation: 0},
 	{punteggio: 0}
 ];
 }
