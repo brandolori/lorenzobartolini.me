@@ -41,7 +41,6 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
     },
 }
 
-
 const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => <>
     <Head>
         <title>{data.title} - Lorenzo Bartolini</title>
@@ -65,8 +64,6 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
 
 </>
 
-
-
 export const getStaticProps = async ({ params: { slug } }) => {
 
     let filePath = folderName
@@ -84,7 +81,6 @@ export const getStaticProps = async ({ params: { slug } }) => {
         }
     }
 }
-
 
 export const getStaticPaths = async () => {
 

@@ -103,6 +103,7 @@ export default () => {
             flat
             // this works only because we're dynamic loading, so no ssr
             dpr={Math.min(window.devicePixelRatio, 1)}
+            gl={{ depth: false }}
             camera={{ fov: 93.75, near: 0.1, far: 1000, position: [0, 0, 4] }}
         >
             <Swarm
@@ -111,8 +112,8 @@ export default () => {
                 tension={75}
                 tensionVariance={65}
 
-                offsetVariance={7}
-                size={20}
+                offsetVariance={8}
+                size={40}
 
                 target={target}
             />

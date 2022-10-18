@@ -37,6 +37,7 @@ const MyApp = ({ Component, pageProps }) => <>
             * {
                 color: white;
                 font-family: ${theme.contentFont};
+                overscroll-behavior: none;
             }
             
             h1,
@@ -63,7 +64,9 @@ const MyApp = ({ Component, pageProps }) => <>
             }
                         
             p,
-            ol * {
+            ol *,
+            ul *,
+            small {
                 text-shadow:
                     0px 0px 8px var(--backgroundcolor),
                     0px 0px 8px var(--backgroundcolor);
@@ -78,6 +81,9 @@ const MyApp = ({ Component, pageProps }) => <>
             
             code {
                 font-family: monospace;
+            }
+            canvas {
+                filter: blur(1px);
             }
         `}</style>
         <Component {...pageProps} />
