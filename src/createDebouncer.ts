@@ -1,6 +1,6 @@
 export default (ms = 100) => {
-    let timeout
-    let latestCallback
+    let timeout: NodeJS.Timeout
+    let latestCallback: () => void
     return (cb: () => void) => {
         // console.log("DEBOUNCE")
         latestCallback = cb

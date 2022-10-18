@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Canvas, extend } from '@react-three/fiber'
+import { Canvas } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 import { theme } from '../src/common'
 import PointerContext from '../src/PointerContext'
@@ -10,11 +10,11 @@ import PointerContext from '../src/PointerContext'
 // extend({ Mesh, BoxGeometry, MeshBasicMaterial, TorusGeometry })
 
 const randomBinomial = () => {
-    let u = 0, v = 0;
-    while (u === 0) u = Math.random(); //Converting [0,1) to (0,1)
-    while (v === 0) v = Math.random();
-    let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-    return num / 10.0; // Translate to 0 -> 1
+    let u = 0, v = 0
+    while (u === 0) u = Math.random() //Converting [0,1) to (0,1)
+    while (v === 0) v = Math.random()
+    let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v)
+    return num / 10.0 // Translate to 0 -> 1
 }
 
 const centeredRandom = () => Math.random() - .5
