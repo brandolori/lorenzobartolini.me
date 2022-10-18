@@ -20,7 +20,7 @@ const feed = new Feed({
     favicon: `${baseUrl}/favicon.ico`,
     copyright: "2021 Lorenzo Bartolini",
     author: lorib
-});
+})
 
 const folderPath = path.join("pages-md", "posts")
 const posts = fs.readdirSync(folderPath)
@@ -30,7 +30,7 @@ const posts = fs.readdirSync(folderPath)
         return ({
             data,
             url: filePath.replace(".md", "")
-        });
+        })
     })
     .sort((a, b) => a.data.date > b.data.date ? -1 : 1)
 
@@ -41,15 +41,15 @@ posts.forEach(({ data, url }) => {
         description: data.summary,
         author: [lorib],
         date: new Date(data.date)
-    });
-});
+    })
+})
 
-feed.addCategory("Tech");
+feed.addCategory("Tech")
 
 fs.writeFile(path.join('public', 'rss.xml'), feed.rss2(), (err) => {
     if (err) {
-        console.log(err);
+        console.log(err)
     } else {
-        console.log('RSS feed written successfully');
+        console.log('RSS feed written successfully')
     }
-});
+})

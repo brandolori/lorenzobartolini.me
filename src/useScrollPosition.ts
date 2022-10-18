@@ -1,5 +1,5 @@
-import { MutableRefObject, useEffect, useState } from "react";
-import createDebouncer from "./createDebouncer";
+import { MutableRefObject, useEffect, useState } from "react"
+import createDebouncer from "./createDebouncer"
 
 
 export default (ref: MutableRefObject<HTMLElement>) => {
