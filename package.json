@@ -19,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^8.0.3",
     "react-spring": "^9.5.5",
+    "remark-unwrap-images": "^3.0.1",
     "three": "^0.145.0"
   },
   "devDependencies": {

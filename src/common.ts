@@ -1,5 +1,6 @@
 const theme = {
     mainColor: "#FFA500",
+    modelColor: "#604a21",
     backgroundColor: "#23272f",
     headingFont: "Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif",
     contentFont: "Georgia, Times, 'Times New Roman', serif"

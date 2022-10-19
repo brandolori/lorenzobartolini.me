@@ -39,6 +39,10 @@ const MyApp = ({ Component, pageProps }) => <>
                 font-family: ${theme.contentFont};
                 overscroll-behavior: none;
             }
+
+            pre {
+                overscroll-behavior: auto;
+            }
             
             h1,
             h2,
@@ -46,7 +50,6 @@ const MyApp = ({ Component, pageProps }) => <>
             h4 {
                 font-family: ${theme.headingFont};
                 color: var(--maincolor);
-                text-shadow: 0px 0px 8px var(--backgroundcolor);
             }
 
             h1 {
@@ -62,16 +65,7 @@ const MyApp = ({ Component, pageProps }) => <>
             p {
                 line-height: 1.5rem;
             }
-                        
-            p,
-            ol *,
-            ul *,
-            small {
-                text-shadow:
-                    0px 0px 8px var(--backgroundcolor),
-                    0px 0px 8px var(--backgroundcolor);
-            }
-            
+           
             pre {
                 overflow-x: scroll;
                 background-color: #1a1a1ace;
@@ -80,10 +74,7 @@ const MyApp = ({ Component, pageProps }) => <>
             }
             
             code {
-                font-family: monospace;
-            }
-            canvas {
-                filter: blur(1px);
+                font-family: "Courier New", monospace;
             }
         `}</style>
         <Component {...pageProps} />

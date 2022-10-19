@@ -1,12 +1,11 @@
 export default (ms = 100) => {
-    let timeout: NodeJS.Timeout
+    console.log("CREATE")
+    let timeout;
     let latestCallback: () => void
     return (cb: () => void) => {
-        // console.log("DEBOUNCE")
         latestCallback = cb
         if (!timeout)
             timeout = setTimeout(() => {
-                // console.log("CALL")
                 latestCallback()
                 timeout = undefined
             }, ms)

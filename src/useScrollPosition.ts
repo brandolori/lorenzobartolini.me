@@ -15,6 +15,6 @@ export default (ref: MutableRefObject<HTMLElement>) => {
         window.addEventListener("scroll", callback)
 
         return () => window.removeEventListener("scroll", callback)
-    })
+    }, [ref])
     return pos
 }

@@ -6,7 +6,6 @@ import DesktopPointerContext from "./DesktopPointerContext"
 import useIsMobile from "../src/useIsMobile"
 import React, { useEffect, useState } from "react"
 import { theme } from "../src/common"
-// import Background from "./Background"
 
 const Background = dynamic(() => import("./Background"), { ssr: false })
 
@@ -56,8 +55,6 @@ const NavBar = () => <>
         </div>
     </nav>
 </>
-
-let latestPointer = { x: 0, y: 0 }
 
 const Layout = (props) => {
     const PointerProvider = useIsMobile() ? MobilePointerContext : DesktopPointerContext

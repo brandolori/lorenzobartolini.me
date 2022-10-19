@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown"
 import AnimatedHeader from "../components/AnimatedHeader"
 import { SpecialComponents } from "react-markdown/lib/ast-to-react"
 import { NormalComponents } from "react-markdown/lib/complex-types"
+import remarkUnwrapImages from "remark-unwrap-images"
 
 const folderName = "pages-md"
 
@@ -34,7 +35,6 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
                 </video>}
             {alt != "video" &&
                 <img draggable="false" style={{ borderRadius: "6px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
-                // <div style={{ width: "100%", height: 400, backgroundImage: `url(/${slug}/${src})`, backgroundSize: "contain", backgroundRepeat: "no-repeat", backgroundPosition: "center center" }}></div>
             }
             <figcaption>{title}</figcaption>
         </figure>
@@ -43,7 +43,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
 
 const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug: string[] }) => <>
     <Head>
-        <title>{data.title} - Lorenzo Bartolini</title>
+        <title>{`${data.title} - Lorenzo Bartolini`}</title>
         <meta name="description" content={data.summary} />
     </Head>
 
@@ -58,7 +58,11 @@ const Page = ({ htmlString, data, slug }: { htmlString: string, data: any, slug:
                     margin-top: 3rem;
                 }
                 `}</style>
-            <ReactMarkdown components={components} skipHtml={false} children={htmlString} />
+            <ReactMarkdown
+                components={components}
+                skipHtml={false}
+                children={htmlString}
+                remarkPlugins={[remarkUnwrapImages]} />
         </div>
     </SlugContext.Provider>
 

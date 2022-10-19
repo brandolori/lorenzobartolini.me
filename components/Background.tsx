@@ -80,7 +80,7 @@ const Pebble = (props) => {
             ? <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
             : <boxGeometry args={[randomSize * 1.3, randomSize * 1.3, randomSize * 1.3]} />}
 
-        <meshBasicMaterial color={theme.mainColor} />
+        <meshBasicMaterial color={theme.modelColor} />
     </mesh >
 }
 
@@ -90,18 +90,16 @@ export default () => {
     const [offScreen, setOffScreen] = useState(true)
     const pointerPosition = useContext(PointerContext)
 
-    const target = offScreen ? { x: 10, y: 0 } : { x: pointerPosition.x * targetMultiplier * window.innerWidth / window.innerHeight, y: pointerPosition.y * targetMultiplier }
+    const target = { x: pointerPosition.x * targetMultiplier * window.innerWidth / window.innerHeight, y: pointerPosition.y * targetMultiplier }
 
-    //after load, start targeting pointer position
     useEffect(() => {
-        setTimeout(() => {
-            setOffScreen(false)
-        }, 100)
+        setOffScreen(false)
     }, [])
+
     return <>
         <Canvas
+            style={{ filter: offScreen ? "opacity(0%)" : "opacity(100%)", transition: "filter 3s" }}
             flat
-            // this works only because we're dynamic loading, so no ssr
             dpr={Math.min(window.devicePixelRatio, 1)}
             gl={{ depth: false }}
             camera={{ fov: 93.75, near: 0.1, far: 1000, position: [0, 0, 4] }}
