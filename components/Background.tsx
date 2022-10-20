@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
 import { centeredRandom, randomBinomial, theme } from '../src/common'
@@ -53,17 +53,24 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 }
 
 const Pebble = (props) => {
-    const [randomRotation,] = useState(() => [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(() => .08 + centeredRandom() * .08)
+    const [initialRotation,] = useState(() => [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
+    const [size,] = useState(() => .08 + centeredRandom() * .08)
     const [randomModel,] = useState(() => Math.random())
 
+    const [rotationSpeed,] = useState(() => Math.random() * 0.01)
+    const mesh = useRef<any>()
+    useFrame(() => {
+        mesh.current.rotation.x += rotationSpeed
+    })
+
     return <mesh
+        ref={mesh}
         {...props}
-        rotation={randomRotation}
+        rotation={initialRotation}
     >
         {randomModel < .5
-            ? <torusGeometry args={[randomSize, randomSize / 4, 20, 20]} />
-            : <boxGeometry args={[randomSize * 1.3, randomSize * 1.3, randomSize * 1.3]} />}
+            ? <torusGeometry args={[size, size / 4, 20, 20]} />
+            : <boxGeometry args={[size * 1.3, size * 1.3, size * 1.3]} />}
 
         <meshBasicMaterial color={theme.modelColor} />
     </mesh >
