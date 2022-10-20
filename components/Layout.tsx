@@ -1,11 +1,9 @@
 import Link from "next/link"
 import makeStyles from "../src/makeStyles"
 import dynamic from 'next/dynamic'
-import MobilePointerContext from "./MobilePointerContext"
-import DesktopPointerContext from "./DesktopPointerContext"
-import useIsMobile from "../src/useIsMobile"
 import React, { useEffect, useState } from "react"
 import { theme } from "../src/common"
+import usePointerProvider from "../src/usePointerProvider"
 
 const Background = dynamic(() => import("./Background"), { ssr: false })
 
@@ -43,6 +41,13 @@ const styles = makeStyles({
         padding: "1.5rem",
         fontSize: ".8rem",
         fontWeight: 200
+    },
+    backgroundWrapper: {
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        height: "100vh"
     }
 })
 
@@ -56,8 +61,8 @@ const NavBar = () => <>
     </nav>
 </>
 
-const Layout = (props) => {
-    const PointerProvider = useIsMobile() ? MobilePointerContext : DesktopPointerContext
+const Layout = ({ children }) => {
+    const PointerProvider = usePointerProvider()
 
     // defer the loading of the background by three seconds, allowing the page to become interactive faster
     const [renderBackground, setRenderBackground] = useState(false)
@@ -75,15 +80,17 @@ const Layout = (props) => {
                         }
                     }
                     `}</style>
-            <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, height: "100vh" }}>
+            <div style={styles.backgroundWrapper}>
                 {renderBackground && <Background />}
             </div>
             <div style={styles.container} className="container">
                 <div>
                     <NavBar />
-                    {props.children}
+                    {children}
                 </div>
-                <footer style={styles.footer}> Copyright 2022 Lorenzo Bartolini</footer>
+                <footer style={styles.footer}>
+                    Copyright 2022 Lorenzo Bartolini
+                </footer>
             </div>
         </PointerProvider>
     )

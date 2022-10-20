@@ -1,7 +1,6 @@
 import { MutableRefObject, useEffect, useState } from "react"
 import createDebouncer from "./createDebouncer"
 
-
 export default (ref: MutableRefObject<HTMLElement>) => {
     const [pos, setPos] = useState(0)
 

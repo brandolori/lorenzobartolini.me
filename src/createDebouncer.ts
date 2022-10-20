@@ -1,5 +1,4 @@
 export default (ms = 100) => {
-    console.log("CREATE")
     let timeout;
     let latestCallback: () => void
     return (cb: () => void) => {

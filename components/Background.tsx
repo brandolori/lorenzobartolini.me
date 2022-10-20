@@ -1,23 +1,8 @@
 import { useContext, useEffect, useState } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { useSpring, animated } from '@react-spring/three'
-import { theme } from '../src/common'
+import { centeredRandom, randomBinomial, theme } from '../src/common'
 import PointerContext from '../src/PointerContext'
-
-// this apparently only works if you use v8's createRoot API
-// as per https://github.com/pmndrs/react-three-babel
-// import { Mesh, BoxGeometry, MeshBasicMaterial, TorusGeometry } from 'three'
-// extend({ Mesh, BoxGeometry, MeshBasicMaterial, TorusGeometry })
-
-const randomBinomial = () => {
-    let u = 0, v = 0
-    while (u === 0) u = Math.random() //Converting [0,1) to (0,1)
-    while (v === 0) v = Math.random()
-    let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v)
-    return num / 10.0 // Translate to 0 -> 1
-}
-
-const centeredRandom = () => Math.random() - .5
 
 type SwarmProps = {
     target: { x: number, y: number },
@@ -30,7 +15,7 @@ type SwarmProps = {
 }
 
 const Swarm = ({ target, size, offsetVariance, tension, tensionVariance, friction, frictionVariance }: SwarmProps) => {
-    const [params,] = useState(Array.from(Array(size)).map(() => ({
+    const [params,] = useState(() => Array.from(Array(size)).map(() => ({
         variance: {
             x: randomBinomial() * offsetVariance,
             y: randomBinomial() * offsetVariance
@@ -68,9 +53,9 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 }
 
 const Pebble = (props) => {
-    const [randomRotation,] = useState([Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
-    const [randomSize,] = useState(.08 + centeredRandom() * .08)
-    const [randomModel,] = useState(Math.random())
+    const [randomRotation,] = useState(() => [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2, Math.random() * Math.PI * 2])
+    const [randomSize,] = useState(() => .08 + centeredRandom() * .08)
+    const [randomModel,] = useState(() => Math.random())
 
     return <mesh
         {...props}
@@ -101,7 +86,6 @@ export default () => {
             style={{ filter: offScreen ? "opacity(0%)" : "opacity(100%)", transition: "filter 3s" }}
             flat
             dpr={Math.min(window.devicePixelRatio, 1)}
-            gl={{ depth: false }}
             camera={{ fov: 93.75, near: 0.1, far: 1000, position: [0, 0, 4] }}
         >
             <Swarm
