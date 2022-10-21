@@ -25,7 +25,11 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
     a: ({ href, children }) => <a href={href} rel="noopener" target="_blank">{children}</a>,
     img: ({ src, alt, title }) => {
         const slug = useContext(SlugContext)
-        return <figure>
+        return <figure style={{
+            display: "flex", flexDirection: "column", justifyContent: "center",
+            alignItems: "center"
+        }
+        } >
             <style jsx>{`
             figure {
                 margin: 2rem 1rem;
@@ -36,16 +40,19 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
                 }
             }
             `}</style>
-            {alt == "video" &&
-                <video style={{ maxHeight: 500, margin: "1rem auto", display: "block", borderRadius: "6px" }} controls>
+            {
+                alt == "video" &&
+                <video style={{ maxHeight: 500, margin: "1rem auto", display: "block", borderRadius: "8px" }} controls>
                     <source src={`/${slug}/${src}`} type="video/webm" />
                     Your browser does not support the video tag.
-                </video>}
-            {alt != "video" &&
-                <img draggable="false" style={{ borderRadius: "6px", width: "100%" }} src={`/${slug}/${src}`} alt={alt} />
+                </video>
             }
-            <figcaption>{title}</figcaption>
-        </figure>
+            {
+                alt != "video" &&
+                <img draggable="false" style={{ borderRadius: "8px", maxWidth: "100%", maxHeight: 400 }} src={`/${slug}/${src}`} alt={alt} />
+            }
+            <figcaption style={{ marginTop: "1rem", fontSize: ".9rem" }}>{title}</figcaption>
+        </figure >
     },
 }
 
