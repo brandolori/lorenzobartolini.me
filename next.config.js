@@ -1,18 +1,21 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 const path = require("path")
-/**
- * @return {import('next').NextConfig}
- */
-module.exports = (phase, { defaultConfig }) => {
+
+/** @type {import('next').NextConfig} */
+const baseConfig = {
+    reactStrictMode: true,
+    swcMinify: true
+}
+
+/** @return {import('next').NextConfig} */
+module.exports = (phase) => {
 
     if (phase === PHASE_DEVELOPMENT_SERVER) {
-        return {
-            reactStrictMode: true,
-        }
+        return baseConfig
     }
 
     return {
-        reactStrictMode: true,
+        ...baseConfig,
         webpack: (config) => {
             config.resolve.alias.three$ = path.resolve('./src/three-exports.js')
             return config
