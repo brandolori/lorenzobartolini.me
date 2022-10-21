@@ -22,13 +22,9 @@ export { Color } from 'three/src/math/Color.js'
 export { REVISION, sRGBEncoding, PCFSoftShadowMap, LinearEncoding, NoToneMapping, ACESFilmicToneMapping } from 'three/src/constants.js'
 
 if (typeof __THREE_DEVTOOLS__ !== 'undefined') {
-
-    /* eslint-disable no-undef */
     __THREE_DEVTOOLS__.dispatchEvent(new CustomEvent('register', {
         detail: {
             revision: REVISION,
         }
     }))
-    /* eslint-enable no-undef */
-
 }
