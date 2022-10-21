@@ -38,7 +38,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
             `}</style>
             {alt == "video" &&
                 <video style={{ maxHeight: 500, margin: "1rem auto", display: "block", borderRadius: "6px" }} controls>
-                    <source src={`./${src}`} type="video/webm" />
+                    <source src={`/${slug}/${src}`} type="video/webm" />
                     Your browser does not support the video tag.
                 </video>}
             {alt != "video" &&
