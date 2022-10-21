@@ -13,7 +13,15 @@ const folderName = "pages-md"
 
 const SlugContext = createContext("")
 
+const headingWithId = (Comp) => ({ children }) => {
+    const id = (children as string[])[0].toLowerCase().split(" ").join("-")
+    return <Comp id={id}>{children}</Comp>
+}
+
 const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents> = {
+    h2: headingWithId("h2"),
+    h3: headingWithId("h3"),
+    h4: headingWithId("h4"),
     a: ({ href, children }) => <a href={href} rel="noopener" target="_blank">{children}</a>,
     img: ({ src, alt, title }) => {
         const slug = useContext(SlugContext)
@@ -30,7 +38,7 @@ const components: Partial<Omit<NormalComponents, keyof SpecialComponents> & Spec
             `}</style>
             {alt == "video" &&
                 <video style={{ maxHeight: 500, margin: "1rem auto", display: "block", borderRadius: "6px" }} controls>
-                    <source src={`/${slug}/${src}`} type="video/webm" />
+                    <source src={`./${src}`} type="video/webm" />
                     Your browser does not support the video tag.
                 </video>}
             {alt != "video" &&

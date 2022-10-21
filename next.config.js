@@ -4,7 +4,7 @@ const path = require("path")
 /** @type {import('next').NextConfig} */
 const baseConfig = {
     reactStrictMode: true,
-    swcMinify: true
+    swcMinify: true,
 }
 
 /** @return {import('next').NextConfig} */
@@ -19,6 +19,9 @@ module.exports = (phase) => {
         webpack: (config) => {
             config.resolve.alias.three$ = path.resolve('./src/three-exports.js')
             return config
+        },
+        compiler: {
+            removeConsole: true
         }
     }
 }

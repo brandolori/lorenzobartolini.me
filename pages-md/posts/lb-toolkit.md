@@ -37,11 +37,50 @@ Did it work? Not at first. Here's some of the most interesting aspects I had to 
 - package system: ERB uses `electron-builder` to build the package, spitting out a windows executable with the NSIS plugin. This posed a bit of a problem: I wanted to script some of the installation steps with in the same way that I script the rest of the project, via Javascript. The steps I needed to script were the creation registration on login and the creation of the desktop shortcut. So I decided to switch to the squirrel plugin: squirrel opens your program during the installation, allowing it to perform some checks and steps, and during uninstall, allowing it to clean up after itself.
 - ts-node: ERB by default while in development uses ts-node to run your main code, while it serves your render code with a webpack server. This has some irregularities as ts-node does not have the same behavior as webpack. So I changed that: now the dev environment uses webpack, exactly as the prod environment.
 
+This changes, as many other, necessitated me fiddling with _the beast_. Or as it's more usually known, the webpack configuration. I was hesitant going in: after all, the entire existence of some framework is based on the fact that creating and mantaining a bundler configuration is an astoundingly difficult task for the mere mortal, and who was I to challenge that notion?
+
+But alas, after many tribolations, I was finally able to tame the beast and was left with a working, and dare I say _good_, webpack setup.
+
 ## Tools
+
+Ok so we established that LB Toolkit is just a big collection of useful computer tools. But what exactly are those oh-so-useful tools? Well, thanks for asking.
+
 ### System Settings
+
+There are some parts of an operating system that are tucked away, far from the curious eyes of the mortal user that could damage something using them. But for some of us they're useful, aren't they? So the fact that they're tucked away somewhere is kind of irritating for me.
+
+I'm specifically talking about the Hypervisor. A system wide virtualization platform, that can be turned on (breaking "classic" virtualization), or turned off (breaking some very useful tools, like WSL). The easiest way to turn it on or off is by executing a command in an elevated command prompt, so not exactly the most user friendly.
+
+Another useful (for me) setting that's tucked away inside some menus is the refresh rate of the monitor. This requires you to navigate to the advanced display settings in the settings app, so not exactly unreachable, but is still takes a few clicks.
+
+To alleviate these pains, the home screen of LB Toolkit fatures a toggle and a switch, that allow you to change these settings.
+
+[screen]
+
 ### Updater
+
+This is more an experiment than anything else. To understand this tool, you need to understand my habit of compulsively looking for and installing any update that's available for my installed software. It makes me feel all warm and fuzzy inside.
+
+Do do this I've recently started using `winget`, a command line tool to install and update software, provided by none other than microsoft. Being a command line tool, it's not the most user friendly or the fastest to use, so I set off to change that.
+
+[winget scemo]
+
+The first step was to find a way to get the data from winget to my app. It turns out that winget is very parsing unfriendly, first and foremost because it always prints loading bars and spinners to the stdout. After some fiddling I was finally able to make it behave, and by querying the available updates I was able to show the user a list of available package updates. When clicked on, each button launches `winget upgrade` with the appropriate package name.
+
+[screen]
+
 ### Cleaner
+
+We all have some folders in out machines that get unnecessarily full with files, filling our drives unnecessarily. Oh it's just me? Well, fine.
+
+Still, a simple tool that measures and, when asked, deletes the contents of some particular folders is a simple way to keep that at bay. It currently only lists the download and AMD driver installer folders, but I plan on making it more flexible, allowing the user to add folders to watch without having to recompile the app.
+
+[screen]
+
 ### Regex Checker
+
+
+
 ### Wifi Password
 ### Text Casing
 ### Clipboard
