@@ -1,5 +1,5 @@
 ---
-title: About this site - part 1
+title: About this site
 date: "2021-11-26"
 summary: "Come this winter, I wanted to find a place to both show off all the cool tricks I learn and write short blog stories talking about my experiences. I remembered I had a website that I only had been using to test npm packages in a production setting, and I decided to do something with it."
 ---
@@ -67,5 +67,3 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 
 Now for a bit of trickery: the orange halo that moves around the rings in the background is actually a point light, illuminating a plane placed behind it. Here's a side view:
 ![Side view of the 3d background](side-view.webp "Sorry about the color banding")
-
-The next part will focus on performance, accessibility and talk about my future plans with the site. Stay tuned!
