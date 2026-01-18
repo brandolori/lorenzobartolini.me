@@ -67,3 +67,6 @@ const Follower = ({ target, tension, friction, children }: FollowerProps) => {
 
 Now for a bit of trickery: the orange halo that moves around the rings in the background is actually a point light, illuminating a plane placed behind it. Here's a side view:
 ![Side view of the 3d background](side-view.webp "Sorry about the color banding")
+
+## Can I steal your code?
+Yes! If you want, you can head to the [repository](https://github.com/brandolori/lorenzobartolini.me), clone it, and play around with it if you want. You might find some differences from what I've written in this article, as I continue to tweak and change the appearance and content of the site.
