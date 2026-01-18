@@ -18,5 +18,5 @@ I like to play around with web and game development, mainly with web technologie
 If you need to contact me just write an email!
 
 email - <lori.barto@live.it>  
-github - [profile](https://github.com/brandolori)
-linkedin - [profile](https://www.linkedin.com/in/lorenzo-bartolini-64abb81a9/)
+github - [profile](https://github.com/brandolori)  
+linkedin - [profile](https://www.linkedin.com/in/lorenzo-bartolini-64abb81a9/)  
